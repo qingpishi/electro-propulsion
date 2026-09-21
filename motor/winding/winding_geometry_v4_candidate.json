@@ -1,0 +1,21 @@
+{
+  "version": "V4 practical low-loop-area paired-slot candidate",
+  "state": "CONDITIONAL_CANDIDATE",
+  "topology": "paired-slot back-connected derivative",
+  "active_slot_pack_mm": [34, 21],
+  "endturn_flat_pack_mm": [48, 10],
+  "pair_span_mm": 500,
+  "side_endturn_center_mm": 360,
+  "endturn_layers": 6,
+  "layer_pitch_mm": 12,
+  "maximum_layer_lift_mm": 60,
+  "turns_per_coil": 8,
+  "conductor_area_per_turn_mm2": 88,
+  "predicted_6m_free_leakage_mH_per_phase": 0.4461,
+  "predicted_6m_high_mu_bound_mH_per_phase": 1.1465,
+  "predicted_VLL_free_V_at_43Hz_1430A": 2899,
+  "predicted_PF_free": 0.822,
+  "predicted_VLL_high_mu_V_at_43Hz_1430A": 3189,
+  "predicted_PF_high_mu": 0.748,
+  "main_coil_copper_path_reduction_vs_V3_pct": 21.2
+}
