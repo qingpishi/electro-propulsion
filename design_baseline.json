@@ -2,39 +2,117 @@
   "project": "ZQJS heavy-load electromagnetic propulsion",
   "baseline_id": "DSLIM-V1-candidate-40mps-tau500",
   "design_authority": {
-    "baseline_speed_mps": 40.0,
-    "high_speed_extension_mps": 170.0,
+    "baseline_speed_mps": 40,
+    "high_speed_extension_mps": 170,
     "high_speed_extension_policy": "analysis_only_do_not_modify_baseline_without_explicit_change"
   },
   "system": {
-    "payload_mass_kg": {"value": 10000, "state": "FROZEN"},
-    "sled_target_mass_kg": {"value": 2000, "state": "CONDITIONAL"},
-    "sled_mass_upper_limit_kg": {"value": 2500, "state": "FROZEN"},
-    "launch_angle_deg": {"value": 50, "state": "FROZEN"},
-    "exit_speed_mps": {"value": 40, "state": "FROZEN"},
-    "net_acceleration_g": {"value": 3.0, "state": "FROZEN"},
-    "design_thrust_total_kN": {"value": 500, "state": "FROZEN"},
-    "nominal_thrust_total_kN": {"value": 443.2, "state": "REFERENCE"},
-    "energy_storage": {"value": "supercapacitor", "state": "FROZEN"},
-    "converter_family": {"value": "CHB", "state": "FROZEN"}
+    "payload_mass_kg": {
+      "value": 10000,
+      "state": "FROZEN"
+    },
+    "sled_target_mass_kg": {
+      "value": 2000,
+      "state": "CONDITIONAL"
+    },
+    "sled_mass_upper_limit_kg": {
+      "value": 2500,
+      "state": "FROZEN"
+    },
+    "launch_angle_deg": {
+      "value": 50,
+      "state": "FROZEN"
+    },
+    "exit_speed_mps": {
+      "value": 40,
+      "state": "FROZEN"
+    },
+    "net_acceleration_g": {
+      "value": 3,
+      "state": "FROZEN"
+    },
+    "design_thrust_total_kN": {
+      "value": 500,
+      "state": "FROZEN"
+    },
+    "nominal_thrust_total_kN": {
+      "value": 443.2,
+      "state": "REFERENCE"
+    },
+    "energy_storage": {
+      "value": "supercapacitor",
+      "state": "FROZEN"
+    },
+    "converter_family": {
+      "value": "CHB",
+      "state": "FROZEN"
+    }
   },
   "motor": {
-    "topology": {"value": "dual-channel double-sided long-primary LIM", "state": "FROZEN"},
-    "stator_faces": {"value": 4, "state": "FROZEN"},
-    "phases_per_face": {"value": 3, "state": "FROZEN"},
-    "pole_pitch_mm": {"value": 500, "state": "FROZEN"},
-    "q": {"value": 2, "state": "CONDITIONAL"},
-    "segment_length_m": {"value": 2.0, "state": "CONDITIONAL"},
-    "segments_main_active": {"value": 3, "state": "FROZEN_PRINCIPLE"},
-    "main_energized_length_m": {"value": 6.0, "state": "DERIVED"},
-    "secondary_effective_length_m": {"value": 5.8, "state": "CONDITIONAL"},
-    "stator_effective_width_mm": {"value": 600, "state": "CONDITIONAL"},
-    "airgap_single_side_mm": {"value": 14, "state": "CONDITIONAL"},
-    "secondary_al_thickness_mm": {"value": 12, "state": "CONDITIONAL"},
-    "slot_width_mm": {"value": 42, "state": "CONDITIONAL"},
-    "slot_depth_mm": {"value": 60, "state": "CONDITIONAL"},
-    "yoke_thickness_mm": {"value": 80, "state": "CONDITIONAL"},
-    "turns_per_slot_side_equiv": {"value": 8, "state": "CONDITIONAL"}
+    "topology": {
+      "value": "dual-channel double-sided long-primary LIM",
+      "state": "FROZEN"
+    },
+    "stator_faces": {
+      "value": 4,
+      "state": "FROZEN"
+    },
+    "phases_per_face": {
+      "value": 3,
+      "state": "FROZEN"
+    },
+    "pole_pitch_mm": {
+      "value": 500,
+      "state": "FROZEN"
+    },
+    "q": {
+      "value": 2,
+      "state": "CONDITIONAL"
+    },
+    "segment_length_m": {
+      "value": 2,
+      "state": "CONDITIONAL"
+    },
+    "segments_main_active": {
+      "value": 3,
+      "state": "FROZEN_PRINCIPLE"
+    },
+    "main_energized_length_m": {
+      "value": 6,
+      "state": "DERIVED"
+    },
+    "secondary_effective_length_m": {
+      "value": 5.8,
+      "state": "CONDITIONAL"
+    },
+    "stator_effective_width_mm": {
+      "value": 600,
+      "state": "CONDITIONAL"
+    },
+    "airgap_single_side_mm": {
+      "value": 14,
+      "state": "CONDITIONAL"
+    },
+    "secondary_al_thickness_mm": {
+      "value": 12,
+      "state": "CONDITIONAL"
+    },
+    "slot_width_mm": {
+      "value": 42,
+      "state": "CONDITIONAL"
+    },
+    "slot_depth_mm": {
+      "value": 60,
+      "state": "CONDITIONAL"
+    },
+    "yoke_thickness_mm": {
+      "value": 80,
+      "state": "CONDITIONAL"
+    },
+    "turns_per_slot_side_equiv": {
+      "value": 8,
+      "state": "CONDITIONAL"
+    }
   },
   "motor_40mps_design_point": {
     "thrust_per_channel_kN": 250,
@@ -43,27 +121,70 @@
     "power_factor": 0.87,
     "single_channel_efficiency": 0.856,
     "tooth_B95_T": 1.31,
-    "yoke_B95_T": 1.20
+    "yoke_B95_T": 1.2
   },
   "slip_frequency": {
     "status": "OPEN",
     "fixed_current_scan_speed_mps": 40,
     "fixed_current_A_rms": 1430,
     "maximum_thrust_slip_Hz": 2.44,
-    "maximum_thrust_plateau_Hz": [2.3, 2.6],
-    "previous_operating_reference_Hz": 3.0,
+    "maximum_thrust_plateau_Hz": [
+      2.3,
+      2.6
+    ],
+    "previous_operating_reference_Hz": 3,
     "note": "3 Hz is not the proven maximum-thrust point; normal operating schedule still requires constant-thrust efficiency/PF/loss optimization."
   },
   "converter_preliminary": {
-    "main_face_voltage_class_kV": {"value": 3.3, "state": "CONDITIONAL"},
-    "main_face_pulse_current_class_kA": {"value": 1.8, "state": "CONDITIONAL"},
-    "fourth_segment_preexcitation": {"value": "architecture_open", "state": "OPEN"}
+    "main_face_voltage_class_kV": {
+      "value": 3.3,
+      "state": "CONDITIONAL"
+    },
+    "main_face_pulse_current_class_kA": {
+      "value": 1.8,
+      "state": "CONDITIONAL"
+    },
+    "fourth_segment_preexcitation": {
+      "value": "architecture_open",
+      "state": "OPEN"
+    }
   },
   "remaining_closure_items": [
     "3D transverse edge-effect validation",
     "40 m/s segmented handover transient",
-    "14 mm gap eccentricity and normal-force recalibration",
+    "3D/transient confirmation of 14 mm-gap normal-force behavior",
     "3.3 kV PWM insulation coordination",
     "secondary structural/support validation"
-  ]
+  ],
+  "normal_force_40mps": {
+    "state": "ENGINEERING_VALIDATED_2D",
+    "nominal_gap_mm": 14,
+    "main_reference": {
+      "speed_mps": 40,
+      "slip_Hz": 3,
+      "current_per_face_A_rms": 1430
+    },
+    "centered_face_attraction_kN": 99.04,
+    "restoring_force_kN_per_channel": {
+      "eccentricity_mm_0p25": 0.739,
+      "eccentricity_mm_0p50": 1.479,
+      "eccentricity_mm_1p00": 3.06
+    },
+    "equivalent_lateral_magnetic_stiffness_kN_per_mm_per_channel": -3.04,
+    "maximum_thrust_slip_sensitivity": {
+      "slip_Hz": 2.44,
+      "centered_face_attraction_kN": 125.99,
+      "restoring_force_at_0p5mm_kN": 1.714,
+      "restoring_force_at_1p0mm_kN": 3.432
+    },
+    "structural_screening_face_load_kN": 130,
+    "note": "2D longitudinal result; restoring sign must not be credited as a safety feature until 3D/transient validation."
+  },
+  "candidate_alternatives": {
+    "secondary_split_16mm": {
+      "state": "ANALYSIS_ONLY_NOT_BASELINE",
+      "configuration": "two 2.9 m plates per channel, 16 mm Al, 2-3 mm center gap, common mechanical carrier, electrically unbridged",
+      "status": "2D electromagnetic screening passed; 3D electromagnetic and detailed structural validation still required"
+    }
+  }
 }
