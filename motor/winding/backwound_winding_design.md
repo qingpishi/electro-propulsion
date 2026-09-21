@@ -68,3 +68,46 @@ A full one-channel 6 m STEP and a representative 2 m segment STEP have been gene
 4. End-turn electromagnetic force / vibration.
 5. Segment terminal and busbar layout.
 6. Pulse thermal verification.
+
+
+## V2 geometry refinement — explicit end turns and phase connections
+
+The first 3D winding model used four overlapping rectangular envelope blocks for each back-wound coil. V2 replaces that representation with a single continuous rounded open coil-pack solid.
+
+### Coil-pack geometry
+- equivalent 8-turn slot pack: 34 x 21 mm;
+- slot: 42 x 60 mm;
+- X-side slot clearance: 4 mm per side;
+- rear return clearance from yoke: 12 mm;
+- transverse side end-turn clearance from core: 8 mm;
+- outer end-turn bend radius: 32 mm.
+
+### Connection topology
+Each 2 m stator face retains the q=2 phase-belt sequence and contains eight series slot coils per phase.
+
+A phase:
+`S01 -> S02 -> S07 -> S08 -> S13 -> S14 -> S19 -> S20`
+
+B phase:
+`S05 -> S06 -> S11 -> S12 -> S17 -> S18 -> S23 -> S24`
+
+C phase:
+`S03 -> S04 -> S09 -> S10 -> S15 -> S16 -> S21 -> S22`
+
+The + / - phase-belt sign is implemented by reversing which of the two coil terminals is used as input/output.
+
+Each stator face exports six terminals:
+- A1 / A2
+- B1 / B2
+- C1 / C2
+
+Both terminal banks remain inside the 2 m module X footprint so adjacent stator modules can butt together.
+
+### Connection-conductor geometry
+- copper-equivalent area: 88 mm2;
+- equivalent round diameter: ~10.59 mm;
+- minimum independent connection centerline distance in the 6 m three-module routing: ~23.43 mm;
+- minimum copper-surface clearance: ~12.85 mm.
+
+### Modeling level
+The end turns and inter-coil/terminal connections are explicit 3D copper geometry. The eight insulated rectangular conductors inside each slot coil are still homogenized into one equivalent 8-turn stranded pack. Splitting the pack into individual insulated turns is a manufacturing-detail refinement, not required for the current end-leakage and packaging study.
