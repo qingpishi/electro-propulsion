@@ -39,3 +39,9 @@ Every study should include a short Markdown note describing:
 - result summary,
 - limitations,
 - whether the result changes the baseline.
+
+
+## Consolidated validation evidence (2026-09-21)
+
+- 14 mm nominal-gap normal-force/eccentricity validation: ENGINEERING-grade 2D result.
+- 16 mm two-piece secondary: analysis-only candidate; 2D joint screening passed, not part of the baseline.
