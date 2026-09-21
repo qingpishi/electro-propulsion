@@ -75,18 +75,34 @@ Older electrical reference values retained for traceability:
 
 These older electrical values are **LEGACY REFERENCE values only**. Do not combine them with the 2.44 Hz maximum-thrust point.
 
-### Current operating-point status
+### Current operating-point baseline band
 
-The normal 40 m/s operating schedule is **OPEN**.
+The 40 m/s normal operating baseline is defined as a **range**, not a single slip-frequency point:
 
-A final operating point must be obtained by solving the constant-thrust trade among:
-- slip frequency;
-- phase current;
-- terminal voltage including selected winding end leakage;
-- PF;
-- copper and secondary loss;
-- magnetic loading;
-- converter voltage/current margin.
+- Normal operating slip band: **3.0-4.0 Hz**
+- Preferred operating sub-band: **3.3-3.7 Hz**
+- Reference center only: **~3.4 Hz**
+- Maximum-force/minimum-current reserve band: **2.3-2.6 Hz** (not normal baseline)
+
+At 40 m/s and tau = 0.5 m, the normal band corresponds to:
+- Supply frequency: **43.0-44.0 Hz**
+- Slip ratio: **~6.98-9.09%**
+
+For the **443.2 kN nominal total-thrust requirement**, the current engineering scan across 3.0-4.0 Hz gives approximately:
+- Current: **1.365-1.514 kA RMS/face**
+- V4 conservative line-line voltage: **~3.04 down to 2.71 kV/face**
+- V4 conservative PF: **~0.728-0.761**
+- Channel efficiency: **~85.2%-83.1%**
+- Total two-channel motor loss: **~3.08-3.62 MW**
+
+For the **500 kN design-capability case**, the same band gives approximately:
+- Current: **1.453-1.612 kA RMS/face**
+- V4 conservative line-line voltage: **~3.23 down to 2.88 kV/face**
+- V4 conservative PF: **~0.728-0.761**
+- Channel efficiency: **~85.1%-83.0%**
+- Total two-channel motor loss: **~3.49-4.10 MW**
+
+The preferred **3.3-3.7 Hz** sub-band gives the best practical balance of converter voltage margin, PF, current and efficiency.
 
 Recommended preliminary main CHB envelope remains:
 - **3.3 kV class — CONDITIONAL**
