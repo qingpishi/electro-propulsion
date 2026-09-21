@@ -45,3 +45,15 @@ Every study should include a short Markdown note describing:
 
 - 14 mm nominal-gap normal-force/eccentricity validation: ENGINEERING-grade 2D result.
 - 16 mm two-piece secondary: analysis-only candidate; 2D joint screening passed, not part of the baseline.
+
+
+## Baseline cleanup — 2026-09-21
+
+The 40 m/s operating data is now separated into four categories:
+
+1. **Nominal system requirement**: 443.2 kN total / 221.6 kN per channel.
+2. **Verified 500 kN fixed-current capability**: 1430 A/face, 2.44 Hz slip, 250.068 kN/channel, 500.136 kN total.
+3. **Historical 3 Hz reference**: 1430 A/face, 242.361 kN/channel. The older 2.74 kV / PF 0.87 / efficiency / B values are traceability-only.
+4. **Final normal operating point**: OPEN pending constant-thrust voltage/PF/loss optimization including selected winding end leakage.
+
+Do not use the legacy 2.74 kV / PF 0.87 values as if they were validated at the 2.44 Hz maximum-thrust point.
