@@ -1,0 +1,16 @@
+{
+  "winding_version": "V2 realistic pack-level routing",
+  "coil_pack_cross_section_mm": [34, 21],
+  "turns_equivalent": 8,
+  "slot_size_mm": [42, 60],
+  "side_clearance_each_mm": 4,
+  "rear_return_clearance_mm": 12,
+  "side_endturn_core_clearance_mm": 8,
+  "outer_bend_radius_mm": 32,
+  "connection_copper_area_mm2": 88,
+  "connection_equivalent_diameter_mm": 10.585135,
+  "minimum_connection_centerline_distance_mm": 23.430749,
+  "minimum_connection_surface_clearance_mm": 12.845614,
+  "terminal_scheme": "A1/A2, B1/B2, C1/C2 per stator face per 2 m module",
+  "model_scope": "explicit end turns and phase connections; eight insulated turns homogenized into one stranded coil pack"
+}

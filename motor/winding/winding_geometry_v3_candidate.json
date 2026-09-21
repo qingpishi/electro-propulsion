@@ -1,0 +1,16 @@
+{
+  "winding_version": "V3 local end-leakage optimization candidate",
+  "state": "CONDITIONAL_CANDIDATE",
+  "rear_return_clearance_mm": 12,
+  "side_endturn_core_clearance_mm": 6,
+  "outer_bend_radius_mm": 38,
+  "coil_pack_cross_section_mm": [34, 21],
+  "turns_equivalent": 8,
+  "leakage_6m_free_mH_per_phase": 0.5031,
+  "leakage_6m_high_mu_image_mH_per_phase": 1.3691,
+  "corrected_VLL_free_V_at_43Hz_1430A": 2921,
+  "corrected_VLL_image_V_at_43Hz_1430A": 3290,
+  "corrected_PF_free": 0.816,
+  "corrected_PF_image": 0.725,
+  "note": "Local geometry optimum from parameter scan; does not materially remove end-leakage burden. Main baseline unchanged."
+}

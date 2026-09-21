@@ -112,6 +112,11 @@
     "turns_per_slot_side_equiv": {
       "value": 8,
       "state": "CONDITIONAL"
+    },
+    "winding_topology": {
+      "value": "back-wound / toroidal slot winding",
+      "state": "CONDITIONAL",
+      "rationale": "Preserves q=2 phase-belt MMF and existing electromagnetic baseline; direct tooth-concentrated replacement would require slot/pole redesign."
     }
   },
   "motor_40mps_design_point": {
@@ -154,7 +159,9 @@
     "40 m/s segmented handover transient",
     "3D/transient confirmation of 14 mm-gap normal-force behavior",
     "3.3 kV PWM insulation coordination",
-    "secondary structural/support validation"
+    "secondary structural/support validation",
+    "3D end-winding leakage validation for selected back-wound topology",
+    "final conductor cross-section and PWM insulation build"
   ],
   "normal_force_40mps": {
     "state": "ENGINEERING_VALIDATED_2D",
