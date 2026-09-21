@@ -1,0 +1,18 @@
+{
+  "selected_winding": "back-wound / toroidal slot winding",
+  "state": "CONDITIONAL",
+  "phases": 3,
+  "q": 2,
+  "pole_pitch_mm": 500,
+  "slot_pitch_mm": 83.3333333333,
+  "segment_length_mm": 2000,
+  "slots_per_segment": 24,
+  "turns_per_slot_coil": 8,
+  "preliminary_copper_area_per_turn_mm2": 88,
+  "preliminary_conductor": "rectangular formed copper about 8 x 11 mm or equivalent parallel construction",
+  "coil_pack_envelope_mm": [34, 28],
+  "phase_belt_sequence": "A+,A+,C-,C-,B+,B+,A-,A-,C+,C+,B-,B-",
+  "design_current_A_rms_per_face": 1430,
+  "pulse_current_envelope_A_rms_per_face": 1800,
+  "note": "Concentrated tooth winding was rejected for the current 24-slot/4-pole geometry; reconsider only with slot/pole redesign."
+}
