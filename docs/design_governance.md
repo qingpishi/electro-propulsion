@@ -49,3 +49,16 @@ Current in-house FEM is primarily a 2D longitudinal moving-conductor model. The 
 - segmented handover transient validation,
 - final PWM insulation coordination,
 - mechanical validation of the 5.8 m secondary support structure.
+
+
+## Operating-point naming rule
+
+Do not mix values from different 40 m/s studies into one motor design point.
+
+Use the following terms consistently:
+- **NOMINAL_REQUIREMENT**: system thrust requirement, currently 443.2 kN total at 40 m/s for the 12 t / 50 deg / 3g case. It does not by itself define motor current, slip, voltage or PF.
+- **DESIGN_CAPABILITY**: verified motor capability target, currently 500 kN total. The present self-consistent fixed-current evidence is 1430 A/face, 2.44 Hz slip and about 250.07 kN/channel in the high-resolution 2D scan.
+- **OPERATING_POINT**: a self-consistent set of thrust, current, slip, voltage, PF, efficiency and loss. This is still OPEN at 40 m/s and must be closed by constant-thrust optimization.
+- **LEGACY_REFERENCE**: older engineering values retained for traceability only. In particular, the 3 Hz / 2.74 kV / PF 0.87 reference must not be combined with the 2.44 Hz maximum-thrust point.
+
+When a quantity is not available from the same validated model/run as the rest of an operating point, mark it OPEN instead of borrowing it from another study.

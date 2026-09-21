@@ -30,37 +30,67 @@ Status: **Conditionally frozen for 40 m/s design**
 | Yoke thickness | 80 mm | CONDITIONAL |
 | Equivalent turns per slot side | 8 | CONDITIONAL |
 
-## 40 m/s design point
+## 40 m/s operating-point baseline
 
-Design thrust:
-- Total: 500 kN
-- Per channel: 250 kN
+### System nominal thrust requirement
 
-Current FEM reference at 40 m/s:
-- Current per stator face: ~1.43 kA RMS
-- Line-line voltage per stator face: ~2.74 kV RMS
+For the current 12 t launch mass, 50 deg incline and 3g net acceleration:
+
+- Total nominal electromagnetic thrust requirement: **443.2 kN**
+- Per physical DSLIM channel: **221.6 kN**
+
+This is a **system requirement**, not yet a frozen motor electrical operating point. The current/slip/voltage/PF combination used to meet 443.2 kN remains OPEN.
+
+### 500 kN design capability — current authoritative thrust evidence
+
+The current high-resolution 2D moving-conductor fixed-current scan at 40 m/s gives:
+
+- Current per stator face: **1430 A RMS**
+- Maximum-thrust slip frequency: **2.44 Hz**
+- Maximum-thrust plateau: approximately **2.3–2.6 Hz**
+- Supply frequency at 2.44 Hz slip: **42.44 Hz**
+- Slip ratio: **~5.75%**
+- Thrust: **250.068 kN/channel**
+- Total two-channel thrust: **500.136 kN**
+
+Therefore the 500 kN thrust capability is supported by the current fixed-current 2D model.
+
+However, **voltage, PF, efficiency and loss are not frozen at this 2.44 Hz point**. They require a self-consistent constant-thrust optimization and final winding end-leakage closure.
+
+### Historical 3 Hz engineering reference
+
+At 40 m/s, 3 Hz slip and 1430 A/face, the latest high-resolution thrust scan gives:
+
+- Supply frequency: **43 Hz**
+- Slip ratio: **~6.98%**
+- Thrust: **242.361 kN/channel**
+- Total thrust: **484.722 kN**
+
+Older electrical reference values retained for traceability:
+- Line-line voltage per face: ~2.74 kV RMS
 - Power factor: ~0.87
 - Single-channel efficiency: ~85.6%
 - Tooth B95: ~1.31 T
 - Yoke B95: ~1.20 T
 
-Recommended preliminary main CHB envelope:
-- **3.3 kV class**
-- **1.8 kA pulse current class per stator face**
+These older electrical values are **LEGACY REFERENCE values only**. Do not combine them with the 2.44 Hz maximum-thrust point.
 
-## Slip-frequency status
+### Current operating-point status
 
-The slip-frequency controller is **not frozen**.
+The normal 40 m/s operating schedule is **OPEN**.
 
-At 40 m/s and fixed ~1.43 kA per stator face, the current high-resolution scan gives:
+A final operating point must be obtained by solving the constant-thrust trade among:
+- slip frequency;
+- phase current;
+- terminal voltage including selected winding end leakage;
+- PF;
+- copper and secondary loss;
+- magnetic loading;
+- converter voltage/current margin.
 
-- Peak thrust slip frequency: **~2.44 Hz**
-- Peak thrust plateau: approximately 2.3–2.6 Hz
-- Previous 3 Hz value: engineering operating reference only, not the maximum-thrust point
-
-Therefore do not label 3 Hz as the maximum-thrust slip frequency.
-
-A constant-thrust efficiency/PF/loss scan is still required before freezing the normal operating slip schedule.
+Recommended preliminary main CHB envelope remains:
+- **3.3 kV class — CONDITIONAL**
+- **1.8 kA pulse current class per stator face — CONDITIONAL**
 
 ## Segmentation principle
 

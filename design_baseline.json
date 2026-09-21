@@ -114,15 +114,6 @@
       "state": "CONDITIONAL"
     }
   },
-  "motor_40mps_design_point": {
-    "thrust_per_channel_kN": 250,
-    "current_per_face_A_rms": 1430,
-    "line_line_voltage_per_face_V_rms": 2740,
-    "power_factor": 0.87,
-    "single_channel_efficiency": 0.856,
-    "tooth_B95_T": 1.31,
-    "yoke_B95_T": 1.2
-  },
   "slip_frequency": {
     "status": "OPEN",
     "fixed_current_scan_speed_mps": 40,
@@ -132,17 +123,20 @@
       2.3,
       2.6
     ],
-    "previous_operating_reference_Hz": 3,
-    "note": "3 Hz is not the proven maximum-thrust point; normal operating schedule still requires constant-thrust efficiency/PF/loss optimization."
+    "historical_reference_Hz": 3,
+    "normal_operating_schedule": "OPEN_REQUIRES_CONSTANT_THRUST_EFFICIENCY_PF_LOSS_OPTIMIZATION",
+    "note": "2.44 Hz is the proven fixed-current maximum-thrust point at 40 m/s. It is not yet the frozen normal operating slip."
   },
   "converter_preliminary": {
     "main_face_voltage_class_kV": {
       "value": 3.3,
-      "state": "CONDITIONAL"
+      "state": "CONDITIONAL",
+      "note": "Conditional envelope. Final margin depends on the cleaned 40 m/s operating-point optimization and selected winding end-leakage."
     },
     "main_face_pulse_current_class_kA": {
       "value": 1.8,
-      "state": "CONDITIONAL"
+      "state": "CONDITIONAL",
+      "note": "Conditional pulse-current envelope; current operating schedule is not yet frozen."
     },
     "fourth_segment_preexcitation": {
       "value": "architecture_open",
@@ -150,10 +144,12 @@
     }
   },
   "remaining_closure_items": [
+    "40 m/s constant-thrust operating-point optimization: slip/current/voltage/PF/efficiency/loss",
     "3D transverse edge-effect validation",
     "40 m/s segmented handover transient",
     "3D/transient confirmation of 14 mm-gap normal-force behavior",
-    "3.3 kV PWM insulation coordination",
+    "selected winding end-leakage and phase-impedance closure",
+    "3.3 kV PWM insulation coordination and converter voltage-margin confirmation",
     "secondary structural/support validation"
   ],
   "normal_force_40mps": {
@@ -186,5 +182,53 @@
       "configuration": "two 2.9 m plates per channel, 16 mm Al, 2-3 mm center gap, common mechanical carrier, electrically unbridged",
       "status": "2D electromagnetic screening passed; 3D electromagnetic and detailed structural validation still required"
     }
+  },
+  "baseline_revision": "2026-09-21-cleanup-1",
+  "system_40mps_nominal_requirement": {
+    "status": "REQUIREMENT_NOT_FROZEN_AS_MOTOR_OPERATING_POINT",
+    "speed_mps": 40,
+    "total_thrust_kN": 443.2,
+    "thrust_per_channel_kN": 221.6,
+    "basis": "12,000 kg launch mass, 50 deg incline, 3g net acceleration",
+    "operating_current_A_rms_per_face": "OPEN",
+    "operating_slip_Hz": "OPEN",
+    "operating_line_line_voltage_V_rms_per_face": "OPEN",
+    "note": "This is the system nominal thrust requirement. The motor current/slip/voltage schedule to meet it has not yet been jointly optimized."
+  },
+  "motor_40mps_design_capability": {
+    "status": "ENGINEERING_VALIDATED_2D_FIXED_CURRENT",
+    "speed_mps": 40,
+    "total_design_thrust_kN": 500,
+    "thrust_target_per_channel_kN": 250,
+    "current_per_face_A_rms": 1430,
+    "fixed_current_max_thrust_slip_Hz": 2.44,
+    "fixed_current_max_thrust_plateau_Hz": [
+      2.3,
+      2.6
+    ],
+    "supply_frequency_at_peak_Hz": 42.44,
+    "slip_ratio_at_peak": 0.0575,
+    "measured_thrust_per_channel_kN": 250.068,
+    "measured_total_thrust_kN": 500.136,
+    "voltage_power_factor_efficiency_status": "OPEN",
+    "note": "The 500 kN capability is self-consistent for thrust/current/slip in the current high-resolution 2D fixed-current scan. Voltage, PF and efficiency are not frozen at this point because legacy electrical values came from an earlier reference and final end-winding leakage is still open."
+  },
+  "historical_40mps_3Hz_reference": {
+    "status": "REFERENCE_LEGACY_NOT_DESIGN_POINT",
+    "speed_mps": 40,
+    "slip_frequency_Hz": 3,
+    "supply_frequency_Hz": 43,
+    "slip_ratio": 0.0698,
+    "current_per_face_A_rms": 1430,
+    "latest_high_resolution_thrust_per_channel_kN": 242.361,
+    "latest_high_resolution_total_thrust_kN": 484.722,
+    "legacy_electrical_reference": {
+      "line_line_voltage_per_face_V_rms": 2740,
+      "power_factor": 0.87,
+      "single_channel_efficiency": 0.856,
+      "tooth_B95_T": 1.31,
+      "yoke_B95_T": 1.2
+    },
+    "note": "The 2.74 kV / PF 0.87 / efficiency / B values are retained only for traceability from the earlier 3 Hz engineering reference. They must not be combined with the 2.44 Hz maximum-thrust point or treated as the frozen operating point."
   }
 }
