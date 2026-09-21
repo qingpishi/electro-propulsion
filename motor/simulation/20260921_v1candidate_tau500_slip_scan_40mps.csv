@@ -1,0 +1,28 @@
+slip_frequency_Hz,thrust_per_channel_kN,scan
+0.5,140.44744232635665,0.5 Hz high-resolution
+1.0,187.983569083459,0.5 Hz high-resolution
+1.5,223.5657196839509,0.5 Hz high-resolution
+2.0,244.42436711458384,0.5 Hz high-resolution
+2.5,249.97390117018182,0.5 Hz high-resolution
+3.0,242.36093640959012,0.5 Hz high-resolution
+3.5,224.79532923533,0.5 Hz high-resolution
+4.0,198.5522494870435,0.5 Hz high-resolution
+4.5,171.9510753866817,0.5 Hz high-resolution
+5.0,147.45312112389553,0.5 Hz high-resolution
+5.5,126.43931894942446,0.5 Hz high-resolution
+6.0,109.33453019243468,0.5 Hz high-resolution
+6.5,97.4531395703074,0.5 Hz high-resolution
+7.0,90.455359349573,0.5 Hz high-resolution
+7.5,86.57451400540735,0.5 Hz high-resolution
+8.0,86.23891888779292,0.5 Hz high-resolution
+2.3,249.54570577739076,0.02 Hz fine near peak
+2.32,249.6889557089613,0.02 Hz fine near peak
+2.34,249.80962434367066,0.02 Hz fine near peak
+2.36,249.90810025260518,0.02 Hz fine near peak
+2.38,249.98148633138717,0.02 Hz fine near peak
+2.4,250.0316103373143,0.02 Hz fine near peak
+2.42,250.06035824691412,0.02 Hz fine near peak
+2.44,250.0680726166371,0.02 Hz fine near peak
+2.46,250.056229972823,0.02 Hz fine near peak
+2.48,250.0259098935736,0.02 Hz fine near peak
+2.5,249.97390117018182,0.02 Hz fine near peak
