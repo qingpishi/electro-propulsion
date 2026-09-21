@@ -57,3 +57,15 @@ The 40 m/s operating data is now separated into four categories:
 4. **Final normal operating point**: OPEN pending constant-thrust voltage/PF/loss optimization including selected winding end leakage.
 
 Do not use the legacy 2.74 kV / PF 0.87 values as if they were validated at the 2.44 Hz maximum-thrust point.
+
+
+## 40 m/s operating-band policy — 2026-09-21
+
+The normal operating baseline is now a **slip-frequency band**, not a single point:
+
+- normal operating band: **3.0-4.0 Hz**;
+- preferred sub-band: **3.3-3.7 Hz**;
+- 3.4 Hz is a reference center only;
+- 2.3-2.6 Hz remains a maximum-thrust/minimum-current reserve region.
+
+This range definition is based on the constant-thrust engineering scan with the V4 high-mu end-leakage bound. It is CONDITIONAL pending direct validation.
