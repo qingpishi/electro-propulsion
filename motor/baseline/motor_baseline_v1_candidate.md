@@ -73,9 +73,31 @@ Handover:
 - Exact pre-excitation current and transfer circuit remain OPEN.
 - The final handover design must preserve thrust continuity and must not rely on unequal main-segment current.
 
+## 14 mm air-gap normal-force baseline
+
+2D high-resolution validation at 40 m/s, 3 Hz and 1.43 kA RMS/face:
+- centered absolute attraction: ~99.0 kN per stator face;
+- residual restoring force: ~0.739 / 1.479 / 3.060 kN per channel at 0.25 / 0.50 / 1.00 mm eccentricity;
+- equivalent lateral magnetic stiffness: ~-3.04 kN/mm/channel.
+
+At the 2.44 Hz maximum-thrust slip region and the same current:
+- centered absolute attraction rises to ~126 kN per stator face;
+- residual force is ~1.71 kN at 0.5 mm and ~3.43 kN at 1.0 mm.
+
+Use **130 kN per stator face** as the initial electromagnetic structural screening load before mechanical dynamic/safety factors.
+
+The 2D model predicts restoring behavior. Do not credit that sign as a safety mechanism until 3D/transient validation.
+
+## Secondary structural alternative under study
+
+The main baseline remains the 12 mm continuous aluminium plate.
+
+A **16 mm, two-piece (2 x 2.9 m) secondary with a 2-3 mm centre gap and common mechanical carrier** has passed preliminary 2D electromagnetic screening. It remains ANALYSIS ONLY pending 3D transverse-edge/joint validation and detailed structural FEA.
+
 ## Remaining V1.0 closure items
 
 1. Local 3D transverse edge-effect validation for the 600 mm stator width.
 2. 40 m/s three-main-segment + fourth-segment handover transient.
-3. Normal-force / eccentricity recalibration at 14 mm nominal gap.
+3. 3D/transient confirmation of the 14 mm-gap normal-force behavior.
 4. Final 3.3 kV PWM form-wound insulation coordination.
+5. Secondary structural/support validation.

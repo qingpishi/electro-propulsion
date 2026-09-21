@@ -1,0 +1,4 @@
+eccentricity_mm,Fattr_top_Maxwell_kN,Fattr_bottom_Maxwell_kN,Fy_Lorentz_channel_kN,Fx_channel_kN
+0.0,125.987051,125.987051,0.0,258.655054
+0.5,125.044545,126.876986,-1.714167,258.626460
+1.0,124.048047,127.717234,-3.431851,258.541046
