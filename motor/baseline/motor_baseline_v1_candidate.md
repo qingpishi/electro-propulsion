@@ -1,3 +1,5 @@
+> **SUPERSEDED by `motor_baseline_v2_accepted.md` on 2026-09-22. Retained for traceability only; do not use V1 electrical or geometry values for current design work.**
+
 # DSLIM Motor Baseline — V1.0 Candidate
 
 Status: **Conditionally frozen for 40 m/s design**
