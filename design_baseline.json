@@ -94,8 +94,9 @@
       "state": "CONDITIONAL"
     },
     "secondary_al_thickness_mm": {
-      "value": 12,
-      "state": "CONDITIONAL"
+      "value": 16,
+      "state": "FROZEN",
+      "note": "Promoted to the 40 m/s motor baseline on 2026-09-22. Thickness only is frozen; split/joint construction remains a separate conditional architecture choice."
     },
     "slot_width_mm": {
       "value": 42,
@@ -115,7 +116,7 @@
     }
   },
   "slip_frequency": {
-    "status": "CONDITIONAL_OPERATING_BAND",
+    "status": "RECALIBRATION_REQUIRED_FOR_16MM_BASELINE",
     "baseline_speed_mps": 40,
     "normal_operating_band_Hz": [
       3,
@@ -131,7 +132,7 @@
       2.6
     ],
     "fixed_current_maximum_thrust_slip_Hz": 2.44,
-    "note": "Use 3.0-4.0 Hz as the normal 40 m/s operating baseline band. 3.3-3.7 Hz is the preferred efficiency/voltage/PF compromise sub-band. 2.3-2.6 Hz is a maximum-force/minimum-current reserve region, not the normal operating band."
+    "note": "The stored 3.0-4.0 Hz / 3.3-3.7 Hz bands were derived with the former 12 mm secondary and are retained only for traceability until the 16 mm baseline is recalculated."
   },
   "converter_preliminary": {
     "main_face_voltage_class_kV": {
@@ -184,14 +185,14 @@
   },
   "candidate_alternatives": {
     "secondary_split_16mm": {
-      "state": "ANALYSIS_ONLY_NOT_BASELINE",
+      "state": "ANALYSIS_ONLY_SPLIT_ARCHITECTURE",
       "configuration": "two 2.9 m plates per channel, 16 mm Al, 2-3 mm center gap, common mechanical carrier, electrically unbridged",
-      "status": "2D electromagnetic screening passed; 3D electromagnetic and detailed structural validation still required"
+      "status": "16 mm thickness is now baseline; only the two-piece split/joint architecture remains analysis-only pending 3D electromagnetic and structural validation"
     }
   },
-  "baseline_revision": "2026-09-21-operating-band-1",
+  "baseline_revision": "2026-09-22-secondary-16mm-1",
   "system_40mps_nominal_requirement": {
-    "status": "REQUIREMENT_NOT_FROZEN_AS_MOTOR_OPERATING_POINT",
+    "status": "HISTORICAL_12MM_ELECTRICAL_REFERENCE_PENDING_16MM_RECALC",
     "speed_mps": 40,
     "total_thrust_kN": 443.2,
     "thrust_per_channel_kN": 221.6,
@@ -205,7 +206,7 @@
       4
     ],
     "operating_line_line_voltage_V_rms_per_face": "OPEN",
-    "note": "40 m/s normal operating baseline uses 3.0-4.0 Hz slip. Preferred sub-band is 3.3-3.7 Hz. Electrical ranges are engineering estimates including the V4 high-mu end-leakage bound and remain CONDITIONAL pending direct validation.",
+    "note": "Thrust requirement remains valid, but the stored current/slip/voltage/PF/efficiency ranges were derived with the former 12 mm secondary and must not be used as the 16 mm operating point.",
     "operating_line_line_voltage_V_rms_per_face_conservative_V4": [
       2706,
       3038
@@ -220,7 +221,7 @@
     ]
   },
   "motor_40mps_design_capability": {
-    "status": "ENGINEERING_VALIDATED_2D_FIXED_CURRENT",
+    "status": "HISTORICAL_12MM_ELECTRICAL_REFERENCE_PENDING_16MM_RECALC",
     "speed_mps": 40,
     "total_design_thrust_kN": 500,
     "thrust_target_per_channel_kN": 250,
@@ -235,7 +236,7 @@
     "measured_thrust_per_channel_kN": 250.068,
     "measured_total_thrust_kN": 500.136,
     "voltage_power_factor_efficiency_status": "OPEN",
-    "note": "The 500 kN capability remains validated by the 2.44 Hz fixed-current peak. For normal operation at 40 m/s, use the 3.0-4.0 Hz slip baseline band; 3.3-3.7 Hz is preferred. Voltage/PF/loss ranges use the V4 high-mu end-leakage engineering bound and remain CONDITIONAL.",
+    "note": "The 500 kN requirement remains valid, but the stored 1430 A / 2.44 Hz capability evidence was generated with the former 12 mm secondary. Recalculate before treating any electrical point as authoritative for the 16 mm baseline.",
     "normal_operating_band_Hz": [
       3,
       4
@@ -281,6 +282,20 @@
       "tooth_B95_T": 1.31,
       "yoke_B95_T": 1.2
     },
-    "note": "The 2.74 kV / PF 0.87 / efficiency / B values are retained only for traceability from the earlier 3 Hz engineering reference. They must not be combined with the 2.44 Hz maximum-thrust point or treated as the frozen operating point."
+    "note": "The 2.74 kV / PF 0.87 / efficiency / B values are retained only for traceability from the earlier 3 Hz engineering reference. They must not be combined with the 2.44 Hz maximum-thrust point or treated as the frozen operating point. This reference also uses the former 12 mm secondary."
+  },
+  "baseline_change_20260922_secondary_16mm": {
+    "parameter": "motor.secondary_al_thickness_mm",
+    "old_value_mm": 12,
+    "new_value_mm": 16,
+    "decision": "FROZEN",
+    "scope": "thickness only",
+    "evidence": "20260921_secondary_split_16mm_validation.md showed viable 16 mm electromagnetic performance; split/joint construction is not frozen by this decision",
+    "downstream_actions": [
+      "recalculate 40 m/s slip/current/voltage/PF/loss operating range",
+      "recheck normal force and structural load",
+      "recheck transverse edge effect for the current candidate geometry",
+      "update sled active aluminium mass when secondary planform is frozen"
+    ]
   }
 }
