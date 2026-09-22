@@ -248,7 +248,7 @@
       "status": "V2 baseline uses a 4.5 m continuous 16 mm secondary for electromagnetic design. The older 2 x 2.9 m split/joint concept remains historical analysis only."
     }
   },
-  "baseline_revision": "2026-09-22-motor-v2-accepted",
+  "baseline_revision": "2026-09-22-energy-storage-requirements",
   "system_40mps_nominal_requirement": {
     "status": "V2_DIRECT_16MM_2D_ENGINEERING",
     "speed_mps": 40,
@@ -414,5 +414,124 @@
       ]
     },
     "downstream_impact": "V1 electrical points and topology are superseded; converter envelope moves to 4.5 kV / 3.5 kA conditional; mechanical guide and stator support screening updated."
+  },
+  "energy_storage_preliminary": {
+    "status": "CONDITIONAL_REQUIREMENTS_40MPS",
+    "design_authority_speed_mps": 40,
+    "technology": {
+      "value": "supercapacitor",
+      "state": "FROZEN",
+      "note": "Technology is frozen; vendor, cell/module type, capacitance, ESR and series/parallel realization remain open."
+    },
+    "chb_dc_source_interface": {
+      "value": "each CHB H-bridge cell requires an electrically isolated/floating DC source",
+      "state": "FROZEN_PRINCIPLE",
+      "note": "Direct-coupled supercapacitor versus an isolated bidirectional DC/DC implementation remains OPEN."
+    },
+    "cell_dc_bus_operating_window_kV": {
+      "value": [
+        2,
+        2.5
+      ],
+      "state": "CONDITIONAL",
+      "note": "Normal operating window for the current 2-cell-per-phase 4.5 kV-class CHB candidate. 2.0 kV retains about 0.4 kV line-line synthesis margin to the 4.5 kV converter class in linear modulation."
+    },
+    "cell_dc_bus_derated_min_kV": {
+      "value": 1.9,
+      "state": "REFERENCE_LIMIT",
+      "note": "Derated/emergency region only; not the normal design lower limit."
+    },
+    "system_usable_energy_MJ_min": {
+      "value": 16,
+      "state": "CONDITIONAL_REQUIREMENT",
+      "note": "First-round 40 m/s launch requirement including nominal mission energy plus motor, converter and storage-loss/design margin. Final value requires full launch-profile loss integration."
+    },
+    "system_peak_discharge_power_MW_min": {
+      "value": 25,
+      "state": "CONDITIONAL_REQUIREMENT",
+      "note": "Screening requirement based on 500 kN design thrust at 40 m/s (20 MW mechanical) plus motor/converter losses and engineering margin."
+    },
+    "full_power_pulse_duration_s_min": {
+      "value": 1.5,
+      "state": "CONDITIONAL_REQUIREMENT",
+      "note": "Covers the approximately 1.36 s 0-to-40 m/s constant-3g launch time with margin."
+    },
+    "recharge_time_h_max": {
+      "value": 2,
+      "state": "REQUIREMENT",
+      "note": "Must support the system launch interval requirement of at least 2 h."
+    },
+    "chb_cell_dc_terminal_screening": {
+      "average_discharge_power_MW": {
+        "value": 2,
+        "state": "SCREENING_REFERENCE"
+      },
+      "average_discharge_current_kA_at_low_bus": {
+        "value": 1,
+        "state": "SCREENING_REFERENCE"
+      },
+      "short_pulse_current_capability_kA_min": {
+        "value": 2.5,
+        "state": "CONDITIONAL_INTERFACE_REQUIREMENT",
+        "note": "First-round DC-terminal requirement before final local DC-link ripple-sharing design."
+      }
+    },
+    "regenerative_operation": {
+      "value": "bidirectional energy acceptance required",
+      "state": "REQUIREMENT",
+      "note": "The storage system must accept regenerative energy during electromagnetic braking. Final regenerative power and energy rating remain OPEN pending the braking profile closure."
+    },
+    "local_dc_link_ripple_policy": {
+      "value": "dedicated low-inductance film DC-link buffering required at each H-bridge",
+      "state": "REQUIREMENT",
+      "note": "The supercapacitor bank shall not be used as the sole high-frequency PWM ripple sink. Final 2f ripple split and DC-link capacitance remain OPEN."
+    },
+    "monitoring_protection": {
+      "value": [
+        "cell or submodule voltage monitoring",
+        "cell or submodule temperature monitoring",
+        "balancing/equalization",
+        "overvoltage and undervoltage protection",
+        "overtemperature protection",
+        "overcurrent/short-circuit isolation",
+        "precharge/discharge and safe maintenance isolation"
+      ],
+      "state": "REQUIREMENT"
+    },
+    "insulation_interface": {
+      "value": "floating storage source per H-bridge; insulation coordination compatible with the converter 5 kV interface margin",
+      "state": "CONDITIONAL_REQUIREMENT",
+      "note": "Exact withstand levels, creepage/clearance and grounding scheme remain OPEN until the physical CHB cabinet and PWM insulation design are closed."
+    },
+    "open_selection_items": [
+      "supercapacitor manufacturer and part number",
+      "cell versus module implementation",
+      "series/parallel count",
+      "required equivalent capacitance and ESR",
+      "cooling method",
+      "direct coupling versus isolated bidirectional DC/DC",
+      "final regenerative charging power",
+      "final local DC-link film capacitance and 2f ripple-power sharing"
+    ]
+  },
+  "baseline_change_20260922_energy_storage_requirements": {
+    "parameter": "energy_storage_preliminary",
+    "old_value": "technology only; no electrical interface or pulse-performance requirements",
+    "new_value": "40 m/s supercapacitor technical requirements defined",
+    "decision": "ACCEPT_REQUIREMENTS_KEEP_IMPLEMENTATION_OPEN",
+    "reason": "Provide a stable storage-to-converter interface before detailed CHB design without freezing a specific supercapacitor product.",
+    "evidence": [
+      "40 m/s, 3g mission profile and >=2 h launch interval",
+      "500 kN design thrust gives 20 MW mechanical power at 40 m/s",
+      "current V2 converter envelope is 4.5 kV class / 3.5 kA conditional",
+      "2-cell-per-phase CHB screening supports a 2.0-2.5 kV cell DC operating window"
+    ],
+    "downstream_impact": [
+      "converter cell voltage and modulation design",
+      "local DC-link ripple-buffer sizing",
+      "precharge, isolation and protection design",
+      "regenerative braking energy path",
+      "supercapacitor vendor and series/parallel selection"
+    ]
   }
 }
