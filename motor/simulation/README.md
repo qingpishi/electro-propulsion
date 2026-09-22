@@ -93,3 +93,24 @@ Direct result:
 - 443.2 kN current is about **2.04-2.13 kA** over the same range.
 
 Do not freeze the operating band until the finite-width transverse-edge correction and final winding impedance are closed.
+
+
+## Motor V2 accepted baseline — 2026-09-22
+
+The current 40 m/s motor baseline is `motor/baseline/motor_baseline_v2_accepted.md`.
+
+Accepted geometry:
+- 3.0 m segment / 6 poles / 36 slots;
+- 4.5 m secondary;
+- 800 mm primary width / 1.2 m secondary width;
+- 16 mm aluminium;
+- 14 mm single-side gap;
+- 32 x 79 mm slot / 105 mm yoke;
+- 3 turns.
+
+Current operating policy:
+- normal 3.4-3.8 Hz;
+- preferred 3.4-3.6 Hz;
+- maximum-force/minimum-current reserve 3.0-3.2 Hz.
+
+V1 values are superseded and traceability-only.
