@@ -69,3 +69,12 @@ The normal operating baseline is now a **slip-frequency band**, not a single poi
 - 2.3-2.6 Hz remains a maximum-thrust/minimum-current reserve region.
 
 This range definition is based on the constant-thrust engineering scan with the V4 high-mu end-leakage bound. It is CONDITIONAL pending direct validation.
+
+
+## 16 mm secondary baseline update — 2026-09-22
+
+- Aluminium secondary thickness is now **16 mm FROZEN** for the 40 m/s design authority.
+- The former 12 mm electrical operating bands are historical pending direct 16 mm recalculation.
+- A FEM-calibrated screening recalibration for the current 3 m / 4.5 m optimized candidate indicates a next direct-solve window of about **4.1-4.5 Hz**, centered near **4.3 Hz**.
+- Expected screening currents are about **2.25-2.35 kA** for 443.2 kN and **2.4-2.5 kA** for 500 kN.
+- The two-piece 2 x 2.9 m / 2-3 mm joint architecture remains analysis-only; only thickness was promoted to baseline.
