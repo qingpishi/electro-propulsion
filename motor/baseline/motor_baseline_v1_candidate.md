@@ -1,3 +1,5 @@
+> **SUPERSEDED by `motor_baseline_v2_accepted.md` on 2026-09-22. Retained for traceability only; do not use V1 electrical or geometry values for current design work.**
+
 # DSLIM Motor Baseline — V1.0 Candidate
 
 Status: **Conditionally frozen for 40 m/s design**
@@ -25,10 +27,18 @@ Status: **Conditionally frozen for 40 m/s design**
 | Secondary effective length | 5.8 m | CONDITIONAL |
 | Stator effective width | 600 mm | CONDITIONAL |
 | Single-side air gap | 14 mm | CONDITIONAL |
-| Aluminium secondary thickness | 12 mm | CONDITIONAL |
+| Aluminium secondary thickness | **16 mm** | **FROZEN** |
 | Slot size | 42 x 60 mm | CONDITIONAL |
 | Yoke thickness | 80 mm | CONDITIONAL |
 | Equivalent turns per slot side | 8 | CONDITIONAL |
+
+## 16 mm secondary baseline decision — 2026-09-22
+
+The aluminium secondary thickness is now **FROZEN at 16 mm** for the 40 m/s design authority.
+
+This decision freezes **thickness only**. It does not freeze the previously studied two-piece 2 x 2.9 m split, the 2-3 mm centre joint, or the current secondary length/width architecture.
+
+The prior 12 mm electrical operating points, including the 2.44 Hz / 1430 A capability point and the 3.0-4.0 Hz operating band, are retained only for traceability until a fresh 16 mm calculation is completed.
 
 ## 40 m/s operating-point baseline
 
@@ -136,9 +146,9 @@ The 2D model predicts restoring behavior. Do not credit that sign as a safety me
 
 ## Secondary structural alternative under study
 
-The main baseline remains the 12 mm continuous aluminium plate.
+The baseline aluminium thickness is now **16 mm**.
 
-A **16 mm, two-piece (2 x 2.9 m) secondary with a 2-3 mm centre gap and common mechanical carrier** has passed preliminary 2D electromagnetic screening. It remains ANALYSIS ONLY pending 3D transverse-edge/joint validation and detailed structural FEA.
+A **two-piece (2 x 2.9 m) secondary with a 2-3 mm centre gap and common mechanical carrier** remains ANALYSIS ONLY. The thickness decision does not by itself select that split/joint architecture.
 
 ## Remaining V1.0 closure items
 

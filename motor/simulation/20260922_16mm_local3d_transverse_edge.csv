@@ -1,0 +1,6 @@
+case,slip_Hz,primary_width_m,secondary_width_m,overhang_each_side_mm,thickness_mm,skin_depth_mm,t_over_skin_depth,current_closure_factor,finite_primary_pressure_factor,local_thrust_current_exponent,current_2d_A,current_closure_only_A,current_combined_conservative_A
+design,3.6,0.8,0.8,0,16,44.8368,0.35685,0.607300,0.869947,2.02585,2210.8,2827.91,3029.24
+design,3.6,0.8,1.0,100,16,44.8368,0.35685,0.789518,0.869947,2.02585,2210.8,2484.36,2661.22
+design,3.6,0.8,1.2,200,16,44.8368,0.35685,0.887560,0.869947,2.02585,2210.8,2344.88,2511.82
+design,3.6,0.8,1.25,225,16,44.8368,0.35685,0.903891,0.869947,2.02585,2210.8,2323.87,2489.31
+design,3.6,0.8,1.4,300,16,44.8368,0.35685,0.939992,0.869947,2.02585,2210.8,2279.38,2441.65
