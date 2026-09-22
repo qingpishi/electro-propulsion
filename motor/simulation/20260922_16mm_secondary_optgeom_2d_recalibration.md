@@ -1,4 +1,4 @@
-# 16 mm secondary recalibration for the current 3 m / 4.5 m candidate
+> **Superseded for operating-band selection by the direct 16 mm FEM study \`20260922_16mm_optgeom_direct_2d_fem.md\`.** This file is retained for traceability of the earlier thickness-scaling screening method.\n\n# 16 mm secondary recalibration for the current 3 m / 4.5 m candidate
 
 Status: **engineering screening; 16 mm thickness baseline change accepted, electrical operating point not frozen**
 
