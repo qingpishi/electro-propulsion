@@ -55,30 +55,37 @@ For 500 kN direct 16 mm operating points using the high-mu bound:
 
 **Disposition:** local end leakage does not invalidate a 4.5 kV-class CHB. Retain 5 kV insulation/interface margin until the physical winding and iron are closed in full 3D.
 
-## C. Normal-force / eccentricity screening
+## C. Normal-force / eccentricity interpretation correction
 
-The Maxwell-stress model was re-run with the explicit 16 mm secondary and the new direct 16 mm operating currents. Absolute-force postprocessing is cross-calibrated to the prior optimized-geometry 12 mm reference, and the finite-width magnetic-pressure sensitivity factor (~0.870) is then applied as a local 3D screening correction.
+**Correction after force-object review:** the previous local screening mixed two different quantities:
 
-Results:
-- nominal 443.2 kN @ 3.1 Hz / 2036 A: ~340 kN/face finite-width screened attraction;
-- design 500 kN @ 3.1 Hz / 2160 A: ~382 kN/face;
-- nominal 443.2 kN @ 3.6 Hz / 2083 A: ~345 kN/face;
-- design 500 kN @ 3.6 Hz / 2211 A: ~388 kN/face.
+1. air-gap Maxwell magnetic pressure acting on / loading the stator faces; and
+2. the net electromagnetic force acting on the nonmagnetic aluminium secondary.
 
-At 1 mm eccentricity the residual top-minus-bottom force is only about:
-- ~0.21 kN/channel nominal @ 3.1 Hz;
-- ~0.23 kN/channel design @ 3.1 Hz;
-- ~0.40 kN/channel nominal @ 3.6 Hz;
-- ~0.44 kN/channel design @ 3.6 Hz.
+Those are not interchangeable.
 
-The reduced model shows the closer-gap face becoming slightly stronger, i.e. a sign reversal relative to the older 12 mm baseline restoring tendency. However this differential is only about 0.1% of the absolute face attraction, so the sign is **not robust enough to freeze** and must not be credited as a safety/restoring feature.
+The 16 mm aluminium secondary has approximately mu_r = 1 and has no ferromagnetic attraction term. Its mechanical normal force must be obtained from the induced-current Lorentz force
 
-**Disposition:** use about **0.45 MN/face as a preliminary electromagnetic structural screening load** for the present 16 mm candidate before dynamic/safety factors. This replaces the earlier ~0.55 MN/face local-screen value from the 12 mm optimized candidate.
+```
+F_y,Al = integral_VAl < J x B >_y dV
+```
+
+or equivalently from a **closed** Maxwell-stress surface enclosing only the aluminium secondary.
+
+The previously quoted ~340-390 kN/face values are therefore retained only as **air-gap magnetic-pressure / stator-face structural screening magnitudes**. They must not be interpreted as attraction acting on the aluminium secondary, and the previous top-minus-bottom pressure difference must not be used to infer the secondary eccentricity-force sign.
+
+For the present aluminium-only double-sided LIM, the expected time-averaged normal action from each stator on the secondary in normal positive-slip motoring is eddy-current repulsion away from that stator. At the centered position, the two opposing repulsive forces cancel by symmetry. If the secondary moves closer to one stator, the closer-side field and induced-current interaction is expected to strengthen, so the first-order physical expectation is a restoring force back toward the center.
+
+This is consistent with the older validated 12 mm model, where direct Lorentz-force integration in the secondary and closed-force cross-check both showed restoring behavior.
+
+**Current 16 mm status:** the magnitude and sign of the eccentricity force are OPEN until the 16 mm optimized geometry is recomputed with direct aluminium-volume JxB integration (or an equivalent closed Maxwell surface). Do not credit electromagnetic restoring behavior as a safety feature before that calculation is complete.
+
+**Structural note:** ~0.4 MN/face remains a useful order-of-magnitude stator air-gap pressure load for support-structure screening, but it is not a mover-side force and its direction/net resultant on the stator assembly still requires a closed-surface force balance.
 
 ## Overall
 1. Transverse edge effect remains the largest unresolved local-3D correction.
 2. 1.2-1.25 m secondary transverse width is the next practical candidate.
 3. 3-turn end leakage remains acceptable; 4.5 kV-class conversion remains plausible.
-4. Absolute normal attraction is lower than in the 12 mm optimized candidate but is still structurally important.
-5. Eccentricity-force sign remains unresolved; guide/rail design must not rely on electromagnetic restoring behavior.
+4. Air-gap magnetic pressure on the stator faces remains structurally important; it must not be interpreted as aluminium-secondary attraction.
+5. The prior sign-reversal statement is withdrawn. The physical expectation for the aluminium secondary is restoring repulsion, but the 16 mm magnitude/sign remains OPEN pending direct secondary JxB integration; guide/rail design must not rely on it.
 6. Freeze-grade closure still requires a self-consistent 3D H(curl) moving-conductor model.
