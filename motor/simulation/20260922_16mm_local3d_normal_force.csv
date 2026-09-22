@@ -1,5 +1,5 @@
-case,slip_Hz,current_A,face_attraction_2D_kN,finite_width_factor_16mm,face_attraction_3D_screen_kN,residual_top_minus_bottom_at_1mm_2D_kN,residual_at_1mm_3D_screen_kN
-nominal,3.1,2035.5,390.3632,0.869947,339.5952,0.240378,0.209116
-design,3.1,2160.0,438.5723,0.869947,381.5345,0.264376,0.229993
-nominal,3.6,2083.3,397.0582,0.869947,345.4195,0.461374,0.401371
-design,3.6,2210.8,445.8041,0.869947,387.8259,0.511095,0.444626
+case,slip_Hz,current_A,airgap_pressure_estimate_2D_kN_per_face,finite_width_pressure_factor,airgap_pressure_3D_screen_kN_per_face,secondary_eccentricity_force_status,note
+nominal,3.1,2035.5,390.3632,0.869947,339.5952,OPEN,"Pressure estimate only; not aluminium force. Recompute secondary force from direct JxB."
+design,3.1,2160.0,438.5723,0.869947,381.5345,OPEN,"Pressure estimate only; not aluminium force. Recompute secondary force from direct JxB."
+nominal,3.6,2083.3,397.0582,0.869947,345.4195,OPEN,"Pressure estimate only; not aluminium force. Recompute secondary force from direct JxB."
+design,3.6,2210.8,445.8041,0.869947,387.8259,OPEN,"Pressure estimate only; not aluminium force. Recompute secondary force from direct JxB."
