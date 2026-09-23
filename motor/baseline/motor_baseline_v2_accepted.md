@@ -11,8 +11,10 @@ Status: **ACCEPTED BASELINE for 40 m/s design authority**
   - B: G2, G5, G8, ...
   - C: G3, G6, G9, ...
 - Basic stator segment: **3.0 m**.
-- Normal propulsion uses two adjacent main segments, providing a **6.0 m** energized longitudinal window.
-- During handover, **up to three adjacent 3.0 m longitudinal segments may be energized simultaneously**. These longitudinal segments are supplied by independent A/B/C converter branches; they are not electrically series-connected to one another.
+- Normal travel repeatedly operates in **two-segment and three-segment energized states** as the 4.5 m secondary moves across the 3.0 m stator segmentation.
+- Two adjacent energized segments provide a **6.0 m** stator window; three adjacent energized segments provide a **9.0 m** geometric stator window.
+- The **three-segment full-current state is a recurring normal operating state, not only a brief handover envelope**. When the 4.5 m secondary is centered over a 3 m segment, the approximate longitudinal overlap is 0.75 m / 3.0 m / 0.75 m across the preceding / centered / following segments.
+- The longitudinal segments are supplied by independent A/B/C converter branches; they are not electrically series-connected to one another.
 - Effective secondary length: **4.5 m**.
 - Reference current ramp during takeover: **10 ms (CONDITIONAL)**.
 - At 40 m/s, the modulo-3 reuse geometry provides 1.5 m / 37.5 ms nominal converter reuse margin before acceleration correction.
@@ -27,9 +29,9 @@ Status: **ACCEPTED BASELINE for 40 m/s design authority**
 | Segment length | 3.0 m | FROZEN |
 | Poles / segment | 6 | DERIVED |
 | Slots / segment | 36 | DERIVED |
-| Normal main energized segments | 2 | FROZEN principle |
-| Maximum simultaneous energized segments during handover | 3 | FROZEN operational requirement |
-| Main energized length | 6.0 m | DERIVED |
+| Normal energized segments | **2 or 3, position-dependent** | FROZEN operational principle |
+| Maximum simultaneous energized segments | **3** | FROZEN operational requirement |
+| Geometric energized stator length | **6.0 or 9.0 m** | DERIVED |
 | Secondary effective length | 4.5 m | FROZEN |
 | Stator active width | 800 mm | FROZEN |
 | Secondary active width | 1.2 m | FROZEN |
@@ -79,9 +81,11 @@ The three-phase copper-loss equivalent resistance for one energized 3 m longitud
 
 `Rsum,1seg = RA + RB + RC = 51.852 mOhm`
 
-For loss accounting only:
+For loss accounting:
 - two simultaneously full-current longitudinal segments: **103.705 mOhm** equivalent;
 - three simultaneously full-current longitudinal segments: **155.557 mOhm** equivalent.
+
+Both are recurring operating states. The three-segment value is not merely a handover-only limit.
 
 These latter values are **loss-equivalent sums across independent converter branches, not series terminal resistances**.
 
@@ -95,6 +99,12 @@ For handover with unequal segment currents, use:
 `Pcu = 1.05 * Rsum,1seg * (I1^2 + I2^2 + I3^2)`
 
 with currents in A and `Rsum,1seg = 0.051852 Ohm`.
+
+### Segmentation and per-source maximum-power sizing
+
+Because the 4.5 m secondary moves across 3 m stator segments, normal travel repeatedly includes both two-segment and three-segment energized states. Three-segment full-current operation is therefore a recurring normal state, not only a short handover envelope.
+
+For **per-H-bridge / per-supercapacitor maximum-power sizing**, retain the **two-segment simultaneous-operation case** as the governing condition: the system propulsion demand is concentrated into **24 active H-bridge sources** (2 converter groups x 12 cells) rather than 36. In the recurring three-segment state, all 36 sources may be active, but the same total propulsion demand is distributed across three converter groups, so it does not replace the two-segment case as the maximum per-source power sizing condition.
 
 ## 3. 40 m/s operating policy
 
@@ -167,7 +177,7 @@ Validated / accepted:
 Still open:
 1. self-consistent finite-width 3D H(curl) moving-conductor validation;
 2. direct 16 mm aluminium JxB eccentricity-force closure;
-3. three-group segmented handover transient, including the normal two-segment state and maximum three-segment simultaneous energization;
+3. segmented transition transient including the recurring two-segment and three-segment normal operating states, with current sharing and thrust-continuity validation;
 4. final rectangular copper conductor dimensions, insulation build, detailed AC resistance/proximity loss and physical phase-impedance closure;
 5. mechanical FEA for the 300 kN/mm guide target and 450 kN/face stator pressure load;
 6. secondary/support structural validation.
