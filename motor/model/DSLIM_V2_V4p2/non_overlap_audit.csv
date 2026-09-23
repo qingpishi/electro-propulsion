@@ -1,0 +1,11 @@
+item,value_mm,required_mm,pass,note
+active pack x clearance each slot side,4.0,0,True,24 mm pack inside 32 mm slot
+active pack front clearance,8.0,0,True,clear of air-gap opening
+active pack back clearance,25.0,0,True,clear of yoke
+adjacent active pack x surface gap,59.3333333333,0,True,different slot conductors
+end-turn layer surface gap,2.0,0,True,six V4.2 end-turn layers
+series phase-lane y surface gap,26.0,0,True,A/C/B dedicated corridors
+series phase-lane z surface gap,6.0,0,True,phase-separated vertical lanes
+secondary to stator tooth-face airgap,14.0,0,True,16 mm secondary and 14 mm single-side gap
+top/bottom winding minimum active-face separation,60.0,16.0,True,active copper remains outside secondary envelope
+Boolean phase-to-phase/core/secondary intersection volume,0.0,0,True,all validated representative solid intersections are zero

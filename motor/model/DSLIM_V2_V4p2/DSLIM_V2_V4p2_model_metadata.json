@@ -1,0 +1,45 @@
+{
+  "model_id": "DSLIM_V2_V4p2_3D_20260923",
+  "baseline_id": "DSLIM-V2-accepted-40mps-tau500-16mm",
+  "state": "CURRENT_PARAMETRIC_MODEL",
+  "units": "mm",
+  "scope": "one complete physical double-sided DSLIM channel",
+  "geometry": {
+    "segment_length": 3000,
+    "normal_energized_segments": 2,
+    "max_simultaneous_energized_segments_handover": 3,
+    "normal_active_window": 6000,
+    "pole_pitch": 500,
+    "slots_per_segment": 36,
+    "slot_pitch": 83.3333333333,
+    "slot": [32, 79],
+    "yoke": 105,
+    "stator_width": 800,
+    "secondary": [4500, 1200, 16],
+    "airgap_each_side": 14,
+    "turns_equivalent": 3
+  },
+  "winding": {
+    "version": "V4.2 adapted",
+    "topology": "low-loop-area paired-slot back-connected",
+    "pair_span": 500,
+    "phase_belt": "A+,A+,C-,C-,B+,B+,A-,A-,C+,C+,B-,B-",
+    "six_endturn_layers": true,
+    "layer_pitch": 12,
+    "detail_level": "homogenized 3-turn slot packs with explicit rounded end-turns, series links, external leads and terminal lugs"
+  },
+  "collision_audit": {
+    "phase_A_vs_B_mm3": 0,
+    "phase_A_vs_C_mm3": 0,
+    "phase_B_vs_C_mm3": 0,
+    "phase_A_vs_core_mm3": 0,
+    "phase_B_vs_core_mm3": 0,
+    "phase_C_vs_core_mm3": 0,
+    "phase_A_vs_secondary_mm3": 0,
+    "phase_B_vs_secondary_mm3": 0,
+    "phase_C_vs_secondary_mm3": 0,
+    "result": "PASS"
+  },
+  "dual_channel_note": "The project has two physical DSLIM channels. Mechanical pitch between channels is not frozen; duplicate the complete channel after sled/rail spacing is mechanically frozen.",
+  "generated_binary_note": "STEP/GLB deliverables are generated from the canonical parametric source. Repository text records include SHA-256 hashes for the validated generated files."
+}

@@ -1,0 +1,40 @@
+{
+  "model_id": "DSLIM_V2_V4p2_3D_20260923",
+  "canonical_source": "build_DSLIM_V2_V4p2_parametric.py",
+  "validated_generated_files": [
+    {
+      "name": "DSLIM_V2_3m_V4p2_winding_only.step",
+      "size_bytes": 3548488,
+      "sha256": "756c4fbb61ed02f3575cecaed703c69630a2b6e910184d0c31ef27b34098900d"
+    },
+    {
+      "name": "DSLIM_V2_3m_V4p2_winding_only.glb",
+      "size_bytes": 5020688,
+      "sha256": "c0c34c299b8296b1c41713e4fc07788c0f674bee027f8025a2820a6e410f2350"
+    },
+    {
+      "name": "DSLIM_V2_3m_top_stator_with_V4p2_winding.step",
+      "size_bytes": 4203653,
+      "sha256": "6d561c39d8276f263ed600b2fa71534253df6b950e9dbc7ec660fa46bc0a01b2"
+    },
+    {
+      "name": "DSLIM_V2_3m_segment_with_V4p2_winding.step",
+      "size_bytes": 8662788,
+      "sha256": "0e06e52eae1979ae0d203f04e259287a061e6028422ca73e288db784a3623ffe"
+    },
+    {
+      "name": "DSLIM_V2_single_channel_6m_active_window_V4p2.step",
+      "size_bytes": 17522630,
+      "sha256": "79decce84d1a8aa0c28ddb9d502538aeb2bfba39551dcea6b6433a234c74d3a3"
+    },
+    {
+      "name": "DSLIM_V2_single_channel_6m_active_window_V4p2.glb",
+      "size_bytes": 16984040,
+      "sha256": "0789b7e9780c61385c14dd0d5a218956d241f6d2050016b32a5612fd5708958f"
+    }
+  ],
+  "operating_configurations": {
+    "normal": "two adjacent 3 m longitudinal segments energized",
+    "handover_max": "three adjacent 3 m longitudinal segments may be energized simultaneously; current in entering/leaving segment is controlled independently"
+  }
+}

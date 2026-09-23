@@ -114,3 +114,23 @@ Current operating policy:
 - maximum-force/minimum-current reserve 3.0-3.2 Hz.
 
 V1 values are superseded and traceability-only.
+
+
+## V4.2 winding resistance and handover-loss update — 2026-09-23
+
+The current winding baseline is `motor/winding/winding_baseline_v42.md` and the canonical current CAD source is under `motor/model/DSLIM_V2_V4p2/`.
+
+Key resistance values at 80 degC and 300 mm2 copper per turn:
+- one 3 m stator face: A/B/C = **4.094 / 4.399 / 4.471 mOhm**;
+- one 3 m longitudinal segment after four same-station faces are series-connected: A/B/C = **16.374 / 17.596 / 17.882 mOhm**;
+- three-phase loss-equivalent sum per energized 3 m segment: **51.852 mOhm**.
+
+Operating-state definition:
+- normal main state: **2 energized segments**;
+- handover maximum: **3 simultaneously energized segments**.
+
+At 500 kN / 3.6 Hz / 2.345 kA using the initial 1.05 AC multiplier:
+- two full-current segments: **~0.599 MW copper loss**;
+- three full-current segments: **~0.898 MW copper loss**.
+
+For transient handover, do not assume all three segments carry equal current; integrate the actual `I1(t)^2 + I2(t)^2 + I3(t)^2` trajectory.

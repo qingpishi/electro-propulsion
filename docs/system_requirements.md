@@ -54,3 +54,14 @@ Use ~200 kN as the preliminary electromagnetic braking design level until the fi
 - Three longitudinal converter groups reuse converters every three segments; current ramp reference is 10 ms.
 - Preserve magnetic-field continuity during segment handover.
 - Mechanical gaps between stator modules are not a dedicated thrust-ripple design item in the current baseline.
+
+
+## 5. Motor handover and winding-loss requirements — 2026-09-23
+
+- Normal propulsion uses **two adjacent 3 m longitudinal stator segments**.
+- Segment handover may require **up to three adjacent longitudinal segments energized simultaneously**.
+- The three longitudinal segments are independent A/B/C converter branches and are not electrically series-connected.
+- Copper-loss integration during handover shall use the actual segment-current trajectories:
+  `Pcu = Rac,seg * (I1^2 + I2^2 + I3^2)`.
+- Current V4.2 winding reference uses `Rdc,3ph,1seg = 51.852 mOhm` at 80 degC and 300 mm2 copper per turn, with an initial AC multiplier of 1.05.
+- Final conductor dimensions, AC resistance/proximity loss and thermal closure remain required.

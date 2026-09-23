@@ -76,11 +76,11 @@
     "segments_main_active": {
       "value": 2,
       "state": "FROZEN_PRINCIPLE",
-      "note": "Two adjacent 3 m segments provide a 6 m energized longitudinal window, greater than the 4.5 m secondary length."
+      "note": "Normal propulsion uses two adjacent 3 m segments (6 m main energized window). During segment handover the system may energize three adjacent longitudinal segments simultaneously."
     },
     "main_energized_length_m": {
       "value": 6,
-      "state": "DERIVED"
+      "state": "DERIVED_NORMAL"
     },
     "secondary_effective_length_m": {
       "value": 4.5,
@@ -166,7 +166,156 @@
       "nominal_reuse_time_ms_at_40mps": {
         "value": 37.5,
         "state": "DERIVED"
+      },
+      "normal_main_active_segments": {
+        "value": 2,
+        "state": "FROZEN"
+      },
+      "max_simultaneous_energized_segments_handover": {
+        "value": 3,
+        "state": "FROZEN"
+      },
+      "electrical_connection_note": {
+        "value": "Four same-station faces are series-connected within each longitudinal 3 m segment. Adjacent longitudinal segments are separate converter branches; their resistances are not series-added at a converter terminal.",
+        "state": "FROZEN_PRINCIPLE"
       }
+    },
+    "max_simultaneous_energized_segments": {
+      "value": 3,
+      "state": "FROZEN_OPERATIONAL_REQUIREMENT",
+      "note": "Maximum simultaneous energized longitudinal segments during handover. The three segments are supplied by independent A/B/C longitudinal converter branches and are not electrically series-connected to each other."
+    },
+    "max_simultaneous_energized_length_m": {
+      "value": 9,
+      "state": "DERIVED_HANDOVER_ENVELOPE",
+      "note": "Geometric sum of three 3 m longitudinal segments. Current in the entering/leaving segment may be ramped; 9 m does not imply three segments always carry full current."
+    },
+    "winding": {
+      "version": {
+        "value": "V4.2 adapted to DSLIM V2",
+        "state": "FROZEN"
+      },
+      "topology": {
+        "value": "low-loop-area paired-slot back-connected winding",
+        "state": "FROZEN"
+      },
+      "pair_span_mm": {
+        "value": 500,
+        "state": "FROZEN"
+      },
+      "equivalent_turns_per_coil": {
+        "value": 3,
+        "state": "FROZEN"
+      },
+      "active_slot_pack_envelope_mm": {
+        "value": [
+          24,
+          46
+        ],
+        "state": "FROZEN_MODEL_GEOMETRY",
+        "note": "Homogenized 3-turn pack envelope; not solid copper."
+      },
+      "end_turn_layers": {
+        "value": 6,
+        "state": "FROZEN_MODEL_GEOMETRY"
+      },
+      "end_turn_layer_pitch_mm": {
+        "value": 12,
+        "state": "FROZEN_MODEL_GEOMETRY"
+      },
+      "routing_rule": {
+        "value": "A/C/B phase-separated side corridors; top and bottom stators use opposite +/-Y routing sides; rounded end transitions; no phase/core/secondary solid overlap",
+        "state": "FROZEN_MODEL_GEOMETRY"
+      },
+      "conductor_copper_area_per_turn_mm2": {
+        "value": 300,
+        "state": "CONDITIONAL",
+        "design_range_mm2": [
+          280,
+          320
+        ],
+        "note": "Current copper-loss reference. Final rectangular conductor dimensions and insulation build remain open."
+      },
+      "copper_temperature_reference_C": {
+        "value": 80,
+        "state": "ENGINEERING_REFERENCE"
+      },
+      "copper_resistivity_20C_ohm_m": {
+        "value": 1.724e-8,
+        "state": "REFERENCE"
+      },
+      "copper_temp_coefficient_per_C": {
+        "value": 0.00393,
+        "state": "REFERENCE"
+      },
+      "phase_copper_length_m_per_3m_face": {
+        "A": 57.6409863,
+        "B": 61.9425879,
+        "C": 62.9508973,
+        "average": 60.8448238,
+        "state": "DERIVED_FROM_V4P2_3D_CAD"
+      },
+      "phase_resistance_mOhm_per_3m_face_80C_300mm2": {
+        "A": 4.0935076,
+        "B": 4.3989958,
+        "C": 4.4706032,
+        "average": 4.3210355,
+        "state": "DERIVED_FROM_V4P2_3D_CAD"
+      },
+      "phase_resistance_mOhm_per_3m_longitudinal_segment_four_faces_series_80C_300mm2": {
+        "A": 16.3740304,
+        "B": 17.5959831,
+        "C": 17.8824127,
+        "average": 17.2841421,
+        "state": "DERIVED"
+      },
+      "three_phase_copper_loss_equivalent_resistance_mOhm_per_3m_segment": {
+        "value": 51.8524262,
+        "state": "DERIVED",
+        "note": "Sum of A/B/C phase resistances after four same-station stator faces are series-connected. Use only in Pcu = I^2 * Rsum for one energized longitudinal segment."
+      },
+      "copper_loss_equivalent_resistance_mOhm": {
+        "normal_two_segments": 103.7048523,
+        "max_handover_three_segments": 155.5572785,
+        "state": "DERIVED",
+        "note": "Loss-equivalent sums across independent longitudinal converter branches. These are not electrical series resistances seen by any one converter."
+      },
+      "ac_resistance_multiplier_screening": {
+        "value": 1.05,
+        "state": "ENGINEERING_SCREENING",
+        "note": "Initial 43-44 Hz skin/proximity allowance pending detailed stranded/rectangular-conductor AC loss FEA."
+      },
+      "copper_loss_reference_kW_3p6Hz_443kN_2210A": {
+        "one_segment": 265.915,
+        "two_segments": 531.83,
+        "three_segments": 797.745,
+        "state": "ENGINEERING_SCREENING",
+        "note": "Includes 1.05 AC-resistance multiplier."
+      },
+      "copper_loss_reference_kW_3p6Hz_500kN_2345A": {
+        "one_segment": 299.395,
+        "two_segments": 598.789,
+        "three_segments": 898.184,
+        "state": "ENGINEERING_SCREENING",
+        "note": "Includes 1.05 AC-resistance multiplier."
+      },
+      "copper_loss_reference_kW_3500A_design_envelope": {
+        "one_segment": 666.952,
+        "two_segments": 1333.904,
+        "three_segments": 2000.855,
+        "state": "DESIGN_ENVELOPE_SCREENING",
+        "note": "Short-pulse envelope only; not a continuous thermal operating point."
+      }
+    },
+    "current_3d_model": {
+      "model_id": "DSLIM_V2_V4p2_3D_20260923",
+      "state": "CURRENT_PARAMETRIC_MODEL",
+      "canonical_source_path": "motor/model/DSLIM_V2_V4p2/build_DSLIM_V2_V4p2_parametric.py",
+      "metadata_path": "motor/model/DSLIM_V2_V4p2/DSLIM_V2_V4p2_model_metadata.json",
+      "manifest_path": "motor/model/DSLIM_V2_V4p2/model_manifest.json",
+      "scope": "one complete physical double-sided DSLIM channel with two adjacent 3 m stator segments, explicit V4.2 top/bottom winding geometry, and centered 4.5 m x 1.2 m x 16 mm aluminium secondary",
+      "replication_rule": "Two physical DSLIM channels are required for the four-face system. Inter-channel mechanical pitch is not frozen, so the model defines one complete channel and a duplication rule rather than inventing channel spacing.",
+      "collision_audit": "PASS: A/B/C phase-to-phase, winding-to-core, and winding-to-secondary intersection volumes are zero in the validated representative geometry."
     }
   },
   "slip_frequency": {
@@ -373,10 +522,11 @@
     "Self-consistent finite-width 3D H(curl) moving-conductor validation for the 800 mm primary / 1.2 m secondary geometry",
     "Direct aluminium-volume JxB eccentricity-force calculation for the 16 mm V2 geometry",
     "40 m/s segmented handover transient for the three longitudinal converter groups",
-    "Final 3-turn winding end-leakage and phase-impedance closure with the physical CAD",
     "4.5 kV PWM insulation coordination with 5 kV interface margin",
     "Mechanical validation of the 300 kN/mm guide-stiffness target and 450 kN/face stator magnetic-pressure screening load",
-    "Secondary/support structural validation including the approximately 467 kg active aluminium allocation"
+    "Secondary/support structural validation including the approximately 467 kg active aluminium allocation",
+    "Final rectangular copper conductor dimensions, turn/ground insulation build and detailed AC resistance/proximity-loss FEA for the V4.2 winding",
+    "Segment-handover transient including two-segment normal operation and three-segment maximum simultaneous energization; integrate I1(t)^2 + I2(t)^2 + I3(t)^2 copper loss"
   ],
   "normal_force_40mps": {
     "state": "ENGINEERING_SCREENING_V2_16MM",
@@ -405,7 +555,7 @@
       "status": "V2 baseline uses a 4.5 m continuous 16 mm secondary for electromagnetic design. The older 2 x 2.9 m split/joint concept remains historical analysis only."
     }
   },
-  "baseline_revision": "2026-09-23-converter-v1-1p7kV-4cell",
+  "baseline_revision": "2026-09-23-motor-v2-v42-winding-model",
   "system_40mps_nominal_requirement": {
     "status": "V2_DIRECT_16MM_2D_ENGINEERING",
     "speed_mps": 40,
@@ -725,5 +875,25 @@
       "insulation/common-mode behavior changes because the number of cascaded cells doubles and per-cell dv/dt voltage step decreases"
     ],
     "recommendation": "FROZEN architecture; detailed hardware parameters remain conditional where explicitly marked"
+  },
+  "baseline_change_20260923_winding_model": {
+    "parameter": "motor segmentation active-state definition, V4.2 winding parameters and current 3D motor model",
+    "old_value": "normal two active segments only; winding resistance based on simplified scaling; 3D V4.2 model not versioned in main baseline",
+    "new_value": "normal two segments plus maximum three simultaneously energized during handover; V4.2 CAD-derived phase lengths/resistances; canonical parametric 3D model versioned",
+    "decision": "ACCEPT_AND_UPDATE_BASELINE",
+    "reason": "4.5 m secondary can span the transition between 3 m modules and handover can require three adjacent energized segments; copper loss must use actual V4.2 3D winding path rather than length/turn scaling.",
+    "evidence": [
+      "V4.2 CAD phase copper lengths per 3 m face: A 57.641 m, B 61.943 m, C 62.951 m.",
+      "At 80 C and 300 mm2/turn: per-face phase resistances A/B/C = 4.094/4.399/4.471 mOhm.",
+      "Four-face series per 3 m longitudinal segment gives A/B/C = 16.374/17.596/17.882 mOhm per converter phase.",
+      "500 kN / 3.6 Hz / 2.345 kA screening copper loss = 0.599 MW for two full-current segments and 0.898 MW for three full-current segments."
+    ],
+    "downstream_impact": [
+      "motor thermal design and launch energy integration",
+      "three-group CHB instantaneous power during handover",
+      "supercapacitor peak-power margin",
+      "segment-handover control current ramps",
+      "final copper conductor and cooling design"
+    ]
   }
 }
