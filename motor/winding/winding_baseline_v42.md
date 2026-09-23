@@ -69,3 +69,30 @@ At the 3.5 kA pulse envelope:
 - three: 2.001 MW.
 
 The 3.5 kA values are short-pulse screening values, not continuous thermal ratings.
+
+
+## End-region leakage inductance
+
+The old **0.385 mH/phase** high-mu value was inherited from V4 geometry scaling and is no longer the current V4.2 value.
+
+Current extraction from the actual V4.2 3D end-path geometry, per phase and per one 3 m longitudinal segment after four same-station stator faces are series-connected:
+
+| Model | Free-space | High-mu screening |
+|---|---:|---:|
+| Preferred, double-sided mutual included | **0.106 mH** | **0.273 mH** |
+| Conservative, face mutual neglected | **0.126 mH** | **0.323 mH** |
+| Historical V4 scaled | ~0.150 mH | ~~0.385 mH~~ |
+
+Current use:
+- terminal-voltage / PF engineering calculation: **0.273 mH/phase**;
+- conservative converter-voltage screening: **0.323 mH/phase**.
+
+Extraction method:
+- active slot conductors excluded;
+- analytic regularized self term for each finite straight section;
+- 8-point Gauss-Legendre mutual integration;
+- balanced positive-sequence energy extraction;
+- free-space method calibrated to the old V4 0.4461 mH/phase reference;
+- high-mu screening multiplier = 2.5701.
+
+Model maturity: **ENGINEERING**. Full nonlinear 3D H(curl) end-region closure remains open.

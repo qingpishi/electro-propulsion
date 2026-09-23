@@ -331,6 +331,33 @@
         "three_segments": 2000.855,
         "state": "DESIGN_ENVELOPE_SCREENING",
         "note": "Short-pulse envelope only; not a continuous thermal operating point."
+      },
+      "end_leakage_inductance_mH_per_phase_per_3m_segment": {
+        "preferred_high_mu_mutual_included": {
+          "value": 0.273,
+          "state": "ENGINEERING"
+        },
+        "conservative_high_mu_no_face_mutual": {
+          "value": 0.323,
+          "state": "ENGINEERING_UPPER_SCREENING"
+        },
+        "preferred_free_space_mutual_included": {
+          "value": 0.106,
+          "state": "ENGINEERING"
+        },
+        "conservative_free_space_no_face_mutual": {
+          "value": 0.126,
+          "state": "ENGINEERING_UPPER_SCREENING"
+        },
+        "superseded_old_v4_high_mu": {
+          "value": 0.385,
+          "state": "HISTORICAL_REFERENCE"
+        },
+        "note": "V4.2 values are extracted from the current 3D winding path. Preferred value includes top/bottom double-sided stator mutual coupling. Conservative value neglects face-to-face mutual coupling. The old 0.385 mH V4 geometry-scaled value is superseded for current design work."
+      },
+      "end_leakage_extraction_method": {
+        "value": "actual V4.2 end paths; active-slot conductors excluded; analytic regularized self term + 8-point Gauss-Legendre mutual integration; balanced positive-sequence energy extraction; free-space result calibrated to the historical V4 0.4461 mH reference; high-mu image multiplier 1.1465/0.4461 = 2.5701",
+        "state": "ENGINEERING_METHOD"
       }
     },
     "current_3d_model": {
@@ -368,7 +395,7 @@
     "main_converter_voltage_class_kV": {
       "value": 4.5,
       "state": "FROZEN",
-      "note": "40 m/s V2 converter output class. Current motor screening requires about 4.01-4.15 kV line-line at 500 kN."
+      "note": "40 m/s V2 converter output class remains 4.5 kV. The former 4.01-4.15 kV motor terminal-voltage screening used the superseded 0.385 mH V4 end-leakage estimate and must be recomputed with the current V4.2 0.273 mH preferred / 0.323 mH conservative leakage values."
     },
     "insulation_interface_margin_kV": {
       "value": 5,
@@ -581,7 +608,7 @@
       "status": "V2 baseline uses a 4.5 m continuous 16 mm secondary for electromagnetic design. The older 2 x 2.9 m split/joint concept remains historical analysis only."
     }
   },
-  "baseline_revision": "2026-09-23-segmentation-2-3-recurring",
+  "baseline_revision": "2026-09-23-v42-end-leakage",
   "system_40mps_nominal_requirement": {
     "status": "V2_DIRECT_16MM_2D_ENGINEERING",
     "speed_mps": 40,
@@ -939,5 +966,30 @@
       "per-source storage maximum-power sizing remains governed by the two-segment state because the same propulsion demand is concentrated into 24 rather than 36 H-bridge sources"
     ],
     "recommendation": "FROZEN operational interpretation; transient current sharing remains to be validated"
+  },
+  "baseline_change_20260923_v42_end_leakage": {
+    "parameter": "motor.winding end-region leakage inductance",
+    "old_value": "0.385 mH/phase high-mu screening value from V4 geometry scaling",
+    "new_value": {
+      "preferred_high_mu_mH_per_phase": 0.273,
+      "conservative_high_mu_mH_per_phase": 0.323,
+      "preferred_free_space_mH_per_phase": 0.106,
+      "conservative_free_space_mH_per_phase": 0.126
+    },
+    "decision": "ACCEPT_ENGINEERING_UPDATE",
+    "reason": "Current V4.2 CAD explicitly defines six end-turn layers, phase-separated routing corridors, series links and terminal leads; leakage should be extracted from the actual current geometry rather than the older V4 scaling.",
+    "evidence": [
+      "Analytic regularized self terms plus 8-point Gauss-Legendre mutual integration on the current V4.2 path.",
+      "Balanced positive-sequence energy extraction.",
+      "Calibration against the historical V4 free-space reference 0.4461 mH/phase.",
+      "Preferred result includes double-sided top/bottom stator mutual coupling; conservative result neglects face-to-face mutual coupling."
+    ],
+    "downstream_impact": [
+      "motor terminal-voltage and power-factor recalculation",
+      "4.5 kV CHB modulation margin",
+      "5 kV insulation/interface margin review",
+      "phase-impedance and protection settings"
+    ],
+    "recommendation": "Use 0.273 mH/phase as the current engineering value and 0.323 mH/phase as the conservative voltage-design upper screening value; keep full 3D H(curl) closure open."
   }
 }

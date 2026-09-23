@@ -134,3 +134,18 @@ At 500 kN / 3.6 Hz / 2.345 kA using the initial 1.05 AC multiplier:
 - three full-current segments: **~0.898 MW copper loss**.
 
 For transient handover, do not assume all three segments carry equal current; integrate the actual `I1(t)^2 + I2(t)^2 + I3(t)^2` trajectory.
+
+
+## V4.2 end-leakage recalculation — 2026-09-23
+
+The current V4.2 3D winding geometry supersedes the old 0.385 mH/phase high-mu geometry-scaled V4 estimate.
+
+Per phase / per one 3 m longitudinal segment:
+- preferred free-space: **0.106 mH**;
+- conservative free-space: **0.126 mH**;
+- preferred high-mu screening: **0.273 mH**;
+- conservative high-mu screening: **0.323 mH**.
+
+Use 0.273 mH/phase for current engineering terminal-voltage/PF calculations and 0.323 mH/phase as the conservative voltage-design screening upper bound.
+
+The former terminal-voltage range 4.01-4.15 kV is tied to the superseded 0.385 mH value and must not be treated as current V4.2 voltage evidence.

@@ -100,6 +100,29 @@ For handover with unequal segment currents, use:
 
 with currents in A and `Rsum,1seg = 0.051852 Ohm`.
 
+
+### V4.2 end-region leakage inductance — 2026-09-23
+
+The former **0.385 mH/phase** high-mu value came from geometry scaling of the earlier V4 winding and is now **superseded for current V4.2 design work**.
+
+Current V4.2 extraction uses the actual six-layer end-turn geometry, phase-separated A/C/B routing corridors, series links and terminal leads. Active-slot conductors are excluded from the leakage integral so the 2D main-field inductance is not double-counted.
+
+Per phase, per one 3 m longitudinal segment after the four same-station stator faces are series-connected:
+
+| Treatment | Free-space | High-mu screening |
+|---|---:|---:|
+| Preferred, top/bottom mutual included | **0.106 mH** | **0.273 mH** |
+| Conservative, no face-to-face mutual | **0.126 mH** | **0.323 mH** |
+| Historical V4 geometry-scaled value | ~0.150 mH | ~~0.385 mH~~ |
+
+Use:
+- **0.273 mH/phase** for current engineering terminal-voltage / PF calculations;
+- **0.323 mH/phase** as the conservative voltage-design upper screening value.
+
+Method: analytic regularized self terms + 8-point Gauss-Legendre mutual integration, balanced positive-sequence energy extraction, free-space calibration to the historical V4 **0.4461 mH/phase** reference, and the same high-mu image multiplier **1.1465 / 0.4461 = 2.5701**.
+
+This is **ENGINEERING-grade**, not freeze-grade full 3D H(curl) with nonlinear laminated end-region iron.
+
 ### Segmentation and per-source maximum-power sizing
 
 Because the 4.5 m secondary moves across 3 m stator segments, normal travel repeatedly includes both two-segment and three-segment energized states. Three-segment full-current operation is therefore a recurring normal state, not only a short handover envelope.
@@ -140,9 +163,7 @@ Current converter envelope:
 - **3.5 kA RMS pulse/current capability — CONDITIONAL**;
 - retain **5 kV insulation/interface margin** until PWM insulation and final physical winding impedance are closed.
 
-For the 500 kN 3.4-3.8 Hz band, the 3-turn V4-style high-mu end-leakage screening gives approximately:
-- terminal VLL: **4.01-4.15 kV**;
-- power factor: **~0.696-0.700**.
+The former **4.01-4.15 kV / PF ~0.696-0.700** terminal-voltage screening used the superseded **0.385 mH/phase** V4 geometry-scaled end-leakage value. Recalculate terminal voltage and PF using the current V4.2 leakage values **0.273 mH/phase preferred** and **0.323 mH/phase conservative** before using those old voltage figures for design.
 
 ## 5. Transverse edge effect
 
