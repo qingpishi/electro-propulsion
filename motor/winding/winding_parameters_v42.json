@@ -8,8 +8,14 @@
     "pole_pitch_mm": 500,
     "pair_span_mm": 500,
     "turns_equivalent": 3,
-    "slot_mm": [32, 79],
-    "active_slot_pack_envelope_mm": [24, 46],
+    "slot_mm": [
+      32,
+      79
+    ],
+    "active_slot_pack_envelope_mm": [
+      24,
+      46
+    ],
     "end_turn_layers": 6,
     "end_turn_layer_pitch_mm": 12,
     "phase_belt_sequence": "A+,A+,C-,C-,B+,B+,A-,A-,C+,C+,B-,B-"
@@ -19,7 +25,11 @@
     "upper_series_side": "-Y",
     "lower_endturn_side": "-Y",
     "lower_series_side": "+Y",
-    "phase_corridor_order": ["A", "C", "B"],
+    "phase_corridor_order": [
+      "A",
+      "C",
+      "B"
+    ],
     "rounded_end_transitions": true,
     "phase_separated_corridors": true,
     "solid_overlap_audit": "PASS"
@@ -28,7 +38,10 @@
     "copper_area_per_turn_mm2": {
       "value": 300,
       "state": "CONDITIONAL",
-      "design_range_mm2": [280, 320]
+      "design_range_mm2": [
+        280,
+        320
+      ]
     },
     "active_pack_note": "24 x 46 mm is a homogenized three-turn geometric envelope, not solid copper.",
     "copper_temperature_reference_C": 80,
@@ -70,7 +83,7 @@
   "copper_loss_reference_kW_with_1p05_ac_multiplier": {
     "443p2kN_3p6Hz_2210A": {
       "one_segment": 265.915,
-      "two_segments": 531.830,
+      "two_segments": 531.83,
       "three_segments": 797.745
     },
     "500kN_3p6Hz_2345A": {
@@ -90,5 +103,31 @@
     "turn and ground insulation build",
     "detailed AC resistance/proximity-effect FEA",
     "cooling and 1.5 s pulse thermal validation"
-  ]
+  ],
+  "end_leakage": {
+    "model_grade": "ENGINEERING",
+    "scope": "per phase, per one 3 m longitudinal segment after the four same-station stator faces are series-connected",
+    "extraction": {
+      "current_geometry": "V4.2 adapted CAD path",
+      "active_slot_conductors_included": false,
+      "self_term": "analytic regularized finite-straight-conductor self term",
+      "mutual_term": "8-point Gauss-Legendre double integration",
+      "excitation": "balanced three-phase positive sequence",
+      "calibration": "historical V4 free-space 0.4461 mH/phase reference",
+      "high_mu_multiplier": 2.5701
+    },
+    "free_space_mH_per_phase": {
+      "preferred_mutual_included": 0.106,
+      "conservative_no_face_mutual": 0.126
+    },
+    "high_mu_screening_mH_per_phase": {
+      "preferred_mutual_included": 0.273,
+      "conservative_no_face_mutual": 0.323
+    },
+    "historical_superseded": {
+      "v4_geometry_scaled_high_mu_mH_per_phase": 0.385
+    },
+    "usage": "Use 0.273 mH/phase for current engineering terminal-voltage/PF calculations and 0.323 mH/phase as the conservative voltage-design upper screening value.",
+    "limitation": "Not freeze-grade full 3D H(curl) with nonlinear laminated end-region iron."
+  }
 }
