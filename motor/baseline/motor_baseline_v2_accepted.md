@@ -11,7 +11,8 @@ Status: **ACCEPTED BASELINE for 40 m/s design authority**
   - B: G2, G5, G8, ...
   - C: G3, G6, G9, ...
 - Basic stator segment: **3.0 m**.
-- Two adjacent main segments provide a **6.0 m** energized longitudinal window.
+- Normal propulsion uses two adjacent main segments, providing a **6.0 m** energized longitudinal window.
+- During handover, **up to three adjacent 3.0 m longitudinal segments may be energized simultaneously**. These longitudinal segments are supplied by independent A/B/C converter branches; they are not electrically series-connected to one another.
 - Effective secondary length: **4.5 m**.
 - Reference current ramp during takeover: **10 ms (CONDITIONAL)**.
 - At 40 m/s, the modulo-3 reuse geometry provides 1.5 m / 37.5 ms nominal converter reuse margin before acceleration correction.
@@ -26,7 +27,8 @@ Status: **ACCEPTED BASELINE for 40 m/s design authority**
 | Segment length | 3.0 m | FROZEN |
 | Poles / segment | 6 | DERIVED |
 | Slots / segment | 36 | DERIVED |
-| Main energized segments | 2 | FROZEN principle |
+| Normal main energized segments | 2 | FROZEN principle |
+| Maximum simultaneous energized segments during handover | 3 | FROZEN operational requirement |
 | Main energized length | 6.0 m | DERIVED |
 | Secondary effective length | 4.5 m | FROZEN |
 | Stator active width | 800 mm | FROZEN |
@@ -40,6 +42,59 @@ Status: **ACCEPTED BASELINE for 40 m/s design authority**
 | Phase belt | A+, A+, C-, C-, B+, B+, A-, A-, C+, C+, B-, B- | FROZEN |
 
 Two 4.5 m x 1.2 m x 16 mm aluminium secondaries contain approximately **466.6 kg** of active aluminium at 2700 kg/m3.
+
+
+## 2.1 V4.2 winding baseline
+
+Selected winding: **V4.2 low-loop-area paired-slot back-connected winding**.
+
+Key geometry:
+- pair span: **500 mm**;
+- equivalent turns: **3**;
+- homogenized three-turn active slot-pack envelope: **24 x 46 mm**;
+- six non-overlapping end-turn layers, **12 mm** layer pitch;
+- rounded side/end transitions;
+- A/C/B phase-separated routing corridors;
+- top and bottom stators use opposite +/-Y routing sides;
+- final representative Boolean collision audit: phase-to-phase, winding-to-core and winding-to-secondary solid intersection volume = **0 mm3**.
+
+The 24 x 46 mm active pack is a geometric envelope and must **not** be treated as solid copper. Current copper-loss calculations use a conditional **300 mm2 copper area per turn** (design range 280-320 mm2), with 80 degC copper as the engineering resistance reference.
+
+### CAD-derived copper length and resistance - one 3 m stator face
+
+| Phase | 3D copper path | R @20 degC, 300 mm2 | R @80 degC, 300 mm2 |
+|---|---:|---:|---:|
+| A | 57.641 m | 3.312 mOhm | **4.094 mOhm** |
+| B | 61.943 m | 3.560 mOhm | **4.399 mOhm** |
+| C | 62.951 m | 3.618 mOhm | **4.471 mOhm** |
+| Average phase | 60.845 m | 3.497 mOhm | **4.321 mOhm** |
+
+Four same-station stator faces are series-connected inside one longitudinal 3 m segment. Therefore one converter sees approximately:
+- phase A: **16.374 mOhm**;
+- phase B: **17.596 mOhm**;
+- phase C: **17.882 mOhm**;
+- average phase resistance: **17.284 mOhm**.
+
+The three-phase copper-loss equivalent resistance for one energized 3 m longitudinal segment is:
+
+`Rsum,1seg = RA + RB + RC = 51.852 mOhm`
+
+For loss accounting only:
+- two simultaneously full-current longitudinal segments: **103.705 mOhm** equivalent;
+- three simultaneously full-current longitudinal segments: **155.557 mOhm** equivalent.
+
+These latter values are **loss-equivalent sums across independent converter branches, not series terminal resistances**.
+
+At 3.6 Hz using a 1.05 AC-resistance screening multiplier:
+- 443.2 kN / 2.210 kA: **0.532 MW** for two full-current segments, **0.798 MW** for three;
+- 500 kN / 2.345 kA: **0.599 MW** for two full-current segments, **0.898 MW** for three;
+- 3.5 kA design envelope: **1.334 MW** for two full-current segments, **2.001 MW** for three (short-pulse screening only).
+
+For handover with unequal segment currents, use:
+
+`Pcu = 1.05 * Rsum,1seg * (I1^2 + I2^2 + I3^2)`
+
+with currents in A and `Rsum,1seg = 0.051852 Ohm`.
 
 ## 3. 40 m/s operating policy
 
@@ -112,8 +167,8 @@ Validated / accepted:
 Still open:
 1. self-consistent finite-width 3D H(curl) moving-conductor validation;
 2. direct 16 mm aluminium JxB eccentricity-force closure;
-3. three-group segmented handover transient;
-4. physical 3-turn winding phase impedance and PWM insulation closure;
+3. three-group segmented handover transient, including the normal two-segment state and maximum three-segment simultaneous energization;
+4. final rectangular copper conductor dimensions, insulation build, detailed AC resistance/proximity loss and physical phase-impedance closure;
 5. mechanical FEA for the 300 kN/mm guide target and 450 kN/face stator pressure load;
 6. secondary/support structural validation.
 
