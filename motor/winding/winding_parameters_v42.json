@@ -1,0 +1,94 @@
+{
+  "version": "DSLIM-V2-V4.2-20260923",
+  "state": "CURRENT_WINDING_BASELINE",
+  "topology": "low-loop-area paired-slot back-connected winding",
+  "geometry": {
+    "segment_length_mm": 3000,
+    "slots_per_segment": 36,
+    "pole_pitch_mm": 500,
+    "pair_span_mm": 500,
+    "turns_equivalent": 3,
+    "slot_mm": [32, 79],
+    "active_slot_pack_envelope_mm": [24, 46],
+    "end_turn_layers": 6,
+    "end_turn_layer_pitch_mm": 12,
+    "phase_belt_sequence": "A+,A+,C-,C-,B+,B+,A-,A-,C+,C+,B-,B-"
+  },
+  "routing": {
+    "upper_endturn_side": "+Y",
+    "upper_series_side": "-Y",
+    "lower_endturn_side": "-Y",
+    "lower_series_side": "+Y",
+    "phase_corridor_order": ["A", "C", "B"],
+    "rounded_end_transitions": true,
+    "phase_separated_corridors": true,
+    "solid_overlap_audit": "PASS"
+  },
+  "conductor": {
+    "copper_area_per_turn_mm2": {
+      "value": 300,
+      "state": "CONDITIONAL",
+      "design_range_mm2": [280, 320]
+    },
+    "active_pack_note": "24 x 46 mm is a homogenized three-turn geometric envelope, not solid copper.",
+    "copper_temperature_reference_C": 80,
+    "rho20_ohm_m": 1.724e-8,
+    "temperature_coefficient_per_C": 0.00393,
+    "ac_resistance_multiplier_screening": 1.05
+  },
+  "cad_derived_phase_length_m_per_3m_face": {
+    "A": 57.6409863,
+    "B": 61.9425879,
+    "C": 62.9508973,
+    "average": 60.8448238
+  },
+  "phase_resistance_mOhm_per_3m_face": {
+    "at_20C_300mm2": {
+      "A": 3.3124353,
+      "B": 3.5596341,
+      "C": 3.6175782
+    },
+    "at_80C_300mm2": {
+      "A": 4.0935076,
+      "B": 4.3989958,
+      "C": 4.4706032,
+      "average": 4.3210355
+    }
+  },
+  "phase_resistance_mOhm_per_3m_longitudinal_segment_four_faces_series_80C": {
+    "A": 16.3740304,
+    "B": 17.5959831,
+    "C": 17.8824127,
+    "average": 17.2841421
+  },
+  "copper_loss_equivalent_resistance_mOhm": {
+    "one_3m_segment_three_phase": 51.8524262,
+    "two_segments": 103.7048523,
+    "three_segments": 155.5572785,
+    "note": "Two/three-segment values are loss-equivalent sums across independent converter branches, not electrical series terminal resistances."
+  },
+  "copper_loss_reference_kW_with_1p05_ac_multiplier": {
+    "443p2kN_3p6Hz_2210A": {
+      "one_segment": 265.915,
+      "two_segments": 531.830,
+      "three_segments": 797.745
+    },
+    "500kN_3p6Hz_2345A": {
+      "one_segment": 299.395,
+      "two_segments": 598.789,
+      "three_segments": 898.184
+    },
+    "3500A_design_envelope": {
+      "one_segment": 666.952,
+      "two_segments": 1333.904,
+      "three_segments": 2000.855
+    }
+  },
+  "handover_loss_formula": "Pcu = 1.05 * 0.0518524262 * (I1^2 + I2^2 + I3^2), current in A, power in W",
+  "open_items": [
+    "final rectangular copper dimensions",
+    "turn and ground insulation build",
+    "detailed AC resistance/proximity-effect FEA",
+    "cooling and 1.5 s pulse thermal validation"
+  ]
+}
