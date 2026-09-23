@@ -41,6 +41,13 @@ These remain screening-grade system requirements until full launch-profile loss 
 
 ## 4. Per-H-bridge storage-source requirements
 
+### Segmentation basis for maximum per-source power
+
+Normal motion repeatedly includes both **two-segment and three-segment energized states** because the 4.5 m secondary crosses 3 m stator segments. The three-segment state is a recurring normal operating condition.
+
+For maximum **per-H-bridge / per-supercapacitor** power sizing, however, use the **two-segment simultaneous-operation state** as the governing case. It concentrates the system propulsion demand into **24 active H-bridge sources** (2 longitudinal converter groups x 12 cells), whereas the three-segment state can activate all 36 sources and distributes the same propulsion demand across more sources. Therefore this baseline correction does **not** increase the current per-source maximum-power requirement.
+
+
 Current converter-screening references:
 
 ### Normal 500 kN point

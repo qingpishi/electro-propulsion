@@ -74,13 +74,20 @@
       "state": "FROZEN"
     },
     "segments_main_active": {
-      "value": 2,
-      "state": "FROZEN_PRINCIPLE",
-      "note": "Normal propulsion uses two adjacent 3 m segments (6 m main energized window). During segment handover the system may energize three adjacent longitudinal segments simultaneously."
+      "value": [
+        2,
+        3
+      ],
+      "state": "FROZEN_OPERATIONAL_PRINCIPLE",
+      "note": "Normal operation cycles between two and three adjacent 3 m longitudinal segments according to the 4.5 m secondary overlap position. Three full-current segments are a recurring normal operating state, not only a brief handover envelope."
     },
     "main_energized_length_m": {
-      "value": 6,
-      "state": "DERIVED_NORMAL"
+      "value": [
+        6,
+        9
+      ],
+      "state": "DERIVED_NORMAL_RANGE",
+      "note": "Geometric energized stator length is 6 m in the two-segment state and 9 m in the three-segment state. This does not imply that all energized stator length has equal electromagnetic overlap with the 4.5 m secondary."
     },
     "secondary_effective_length_m": {
       "value": 4.5,
@@ -168,27 +175,46 @@
         "state": "DERIVED"
       },
       "normal_main_active_segments": {
-        "value": 2,
-        "state": "FROZEN"
+        "value": [
+          2,
+          3
+        ],
+        "state": "FROZEN_OPERATIONAL_PRINCIPLE",
+        "note": "Two- and three-segment states recur during normal travel as the 4.5 m secondary moves across 3 m stator segmentation."
       },
       "max_simultaneous_energized_segments_handover": {
         "value": 3,
-        "state": "FROZEN"
+        "state": "FROZEN",
+        "note": "Legacy field name retained for compatibility. Three simultaneously energized segments are not handover-only; they are a recurring normal overlap state."
       },
       "electrical_connection_note": {
         "value": "Four same-station faces are series-connected within each longitudinal 3 m segment. Adjacent longitudinal segments are separate converter branches; their resistances are not series-added at a converter terminal.",
         "state": "FROZEN_PRINCIPLE"
+      },
+      "two_segment_active_hbridge_sources": {
+        "value": 24,
+        "state": "DERIVED",
+        "basis": "2 longitudinal converter groups x 12 H-bridge cells/group"
+      },
+      "three_segment_active_hbridge_sources": {
+        "value": 36,
+        "state": "DERIVED",
+        "basis": "3 longitudinal converter groups x 12 H-bridge cells/group"
+      },
+      "storage_power_sizing_principle": {
+        "value": "Use the two-segment simultaneous-operation state as the governing per-H-bridge / per-supercapacitor maximum-power sizing case. The recurring three-segment state distributes the same system propulsion demand across three converter groups and therefore does not supersede the two-segment case for maximum per-source power sizing.",
+        "state": "FROZEN_SIZING_PRINCIPLE"
       }
     },
     "max_simultaneous_energized_segments": {
       "value": 3,
       "state": "FROZEN_OPERATIONAL_REQUIREMENT",
-      "note": "Maximum simultaneous energized longitudinal segments during handover. The three segments are supplied by independent A/B/C longitudinal converter branches and are not electrically series-connected to each other."
+      "note": "Three adjacent 3 m longitudinal segments can be simultaneously energized as a recurring normal operating state. They are supplied by independent A/B/C converter branches and are not electrically series-connected."
     },
     "max_simultaneous_energized_length_m": {
       "value": 9,
-      "state": "DERIVED_HANDOVER_ENVELOPE",
-      "note": "Geometric sum of three 3 m longitudinal segments. Current in the entering/leaving segment may be ramped; 9 m does not imply three segments always carry full current."
+      "state": "DERIVED_NORMAL_MAX",
+      "note": "Geometric sum of three simultaneously energized 3 m segments during the recurring three-segment normal state."
     },
     "winding": {
       "version": {
@@ -526,7 +552,7 @@
     "Mechanical validation of the 300 kN/mm guide-stiffness target and 450 kN/face stator magnetic-pressure screening load",
     "Secondary/support structural validation including the approximately 467 kg active aluminium allocation",
     "Final rectangular copper conductor dimensions, turn/ground insulation build and detailed AC resistance/proximity-loss FEA for the V4.2 winding",
-    "Segment-handover transient including two-segment normal operation and three-segment maximum simultaneous energization; integrate I1(t)^2 + I2(t)^2 + I3(t)^2 copper loss"
+    "Segment-transition transient including recurring two-segment and three-segment normal operating states; integrate I1(t)^2 + I2(t)^2 + I3(t)^2 copper loss and verify thrust continuity."
   ],
   "normal_force_40mps": {
     "state": "ENGINEERING_SCREENING_V2_16MM",
@@ -555,7 +581,7 @@
       "status": "V2 baseline uses a 4.5 m continuous 16 mm secondary for electromagnetic design. The older 2 x 2.9 m split/joint concept remains historical analysis only."
     }
   },
-  "baseline_revision": "2026-09-23-motor-v2-v42-winding-model",
+  "baseline_revision": "2026-09-23-segmentation-2-3-recurring",
   "system_40mps_nominal_requirement": {
     "status": "V2_DIRECT_16MM_2D_ENGINEERING",
     "speed_mps": 40,
@@ -895,5 +921,23 @@
       "segment-handover control current ramps",
       "final copper conductor and cooling design"
     ]
+  },
+  "baseline_change_20260923_segmentation_operation_correction": {
+    "parameter": "motor longitudinal segmentation operating-state definition and storage maximum-power sizing interpretation",
+    "old_value": "two active segments treated as normal; three active segments treated mainly as a handover maximum",
+    "new_value": "normal travel repeatedly alternates between two and three simultaneously energized 3 m segments; three full-current segments are a recurring normal state",
+    "decision": "ACCEPT_AND_UPDATE_BASELINE",
+    "reason": "A 4.5 m secondary moving across 3 m stator segmentation geometrically overlaps three adjacent segments for a substantial portion of each segment pitch, including when the secondary is centered over a 3 m segment.",
+    "evidence": [
+      "With a 4.5 m secondary centered on a 3 m stator segment, overlap is approximately 0.75 m + 3.0 m + 0.75 m across three adjacent segments.",
+      "Over one 3 m segmentation pitch, the geometric three-segment overlap interval is approximately 1.5 m, i.e. about 50% of travel before control ramp extensions."
+    ],
+    "downstream_impact": [
+      "motor copper-loss and thermal duty-cycle accounting must include recurring three-segment operation",
+      "three converter groups and 36 H-bridge sources can be simultaneously active in normal operation",
+      "segment-transition control and thrust-continuity validation must model recurring two/three-segment states",
+      "per-source storage maximum-power sizing remains governed by the two-segment state because the same propulsion demand is concentrated into 24 rather than 36 H-bridge sources"
+    ],
+    "recommendation": "FROZEN operational interpretation; transient current sharing remains to be validated"
   }
 }
