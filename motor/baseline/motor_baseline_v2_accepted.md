@@ -129,6 +129,67 @@ Because the 4.5 m secondary moves across 3 m stator segments, normal travel repe
 
 For **per-H-bridge / per-supercapacitor maximum-power sizing**, retain the **two-segment simultaneous-operation case** as the governing condition: the system propulsion demand is concentrated into **24 active H-bridge sources** (2 converter groups x 12 cells) rather than 36. In the recurring three-segment state, all 36 sources may be active, but the same total propulsion demand is distributed across three converter groups, so it does not replace the two-segment case as the maximum per-source power sizing condition.
 
+
+## 2.2 T-equivalent circuit baseline — one 3 m / four-face-series branch
+
+Status: **ENGINEERING_BASELINE_CONDITIONAL**
+
+Scope: one longitudinal 3.0 m stator segment, with the four same-station current faces series-connected as one three-phase motor branch.
+
+Standard per-phase T model:
+
+`R1 + jXsigma1` in series with `jXm || (R2'/s + jXsigma2')`.
+
+Current parameter set:
+
+| Parameter | Value |
+|---|---:|
+| R1 DC @ 80 degC | 0.017284 ohm |
+| R1 AC engineering value | **0.01815 ohm** |
+| Lsigma1 from 2D field model | 0.526 mH |
+| V4.2 preferred end leakage | 0.273 mH |
+| Lsigma1 total preferred | **0.799 mH** |
+| V4.2 conservative end leakage | 0.323 mH |
+| Lsigma1 total conservative | **0.849 mH** |
+| Lm | **7.962 mH** |
+| R2' | **0.08753 ohm** |
+| Lsigma2' | **0.7026 mH** |
+| Rfe | OPEN / not independently extracted |
+
+At the 3.6 Hz slip reference, 40 m/s speed:
+- supply frequency: **43.6 Hz**;
+- slip ratio: **0.08257**;
+- Xsigma1 preferred: **0.2189 ohm**;
+- Xsigma1 conservative: **0.2326 ohm**;
+- Xm: **2.181 ohm**;
+- Xsigma2': **0.1925 ohm**;
+- R2'/s: **1.060 ohm**.
+
+Extraction basis:
+- direct nonlinear 16 mm 2D moving-conductor FEM on the accepted V2 geometry;
+- longitudinal end effect included;
+- current V4.2 CAD-derived copper resistance and end leakage added;
+- joint fit to 443.2 kN and 500 kN points at 3.4 / 3.6 / 3.8 Hz.
+
+Validation quality:
+- terminal-voltage RMS error: **~0.42%**;
+- PF absolute error: **~0.003**;
+- secondary-loss RMS error: **~2.21%**;
+- thrust RMS error: **~1.00%**;
+- maximum thrust error among the six validation points: **~1.35%**.
+
+500 kN / 3.6 Hz validation:
+- I1 = **2210.8 A**;
+- referred rotor current I2' = **~1855 A**;
+- secondary loss per 3 m branch = **~0.904 MW**;
+- air-gap power per 3 m branch = **~10.943 MW**;
+- converted mechanical power per 3 m branch = **~10.039 MW**;
+- thrust per branch = **~250.98 kN**;
+- two-branch total = **~501.96 kN** versus **500.09 kN** direct FEM, error **~+0.37%**.
+
+Finite-width note:
+The T parameters above are a longitudinal engineering model. The selected 1.2 m secondary transverse-edge effect is still applied externally. At 3.6 Hz, the current correction is approximately 2210.8 A -> 2344.9 A, corresponding to a thrust factor of about **0.889**. Do not alter R2', X2' or Lm solely to force this correction until full 3D complex-impedance evidence exists.
+
 ## 3. 40 m/s operating policy
 
 Direct nonlinear 16 mm 2D moving-conductor FEM gives:

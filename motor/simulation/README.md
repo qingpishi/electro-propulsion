@@ -149,3 +149,29 @@ Per phase / per one 3 m longitudinal segment:
 Use 0.273 mH/phase for current engineering terminal-voltage/PF calculations and 0.323 mH/phase as the conservative voltage-design screening upper bound.
 
 The former terminal-voltage range 4.01-4.15 kV is tied to the superseded 0.385 mH value and must not be treated as current V4.2 voltage evidence.
+
+
+## 3 m four-face T-equivalent model — 2026-09-24
+
+Scope: one 3 m longitudinal segment with four same-station stator faces series-connected as one three-phase branch.
+
+Engineering parameter set:
+- R1(ac, engineering) = **0.01815 ohm/phase**;
+- Lsigma1 = **0.799 mH/phase preferred**, **0.849 mH/phase conservative**;
+- Lm = **7.962 mH/phase**;
+- R2' = **0.08753 ohm/phase**;
+- Lsigma2' = **0.7026 mH/phase**;
+- Rfe remains OPEN.
+
+Model fit/validation uses the accepted 16 mm nonlinear 2D FEM at 443.2 and 500 kN, slip 3.4/3.6/3.8 Hz, plus the current V4.2 winding resistance/end leakage.
+
+Validation:
+- voltage RMS error ~0.42%;
+- PF abs error ~0.003;
+- secondary-loss RMS error ~2.21%;
+- thrust RMS error ~1.00%;
+- max thrust error ~1.35%.
+
+At 500 kN / 3.6 Hz, two 3 m branches give ~501.96 kN versus 500.09 kN FEM.
+
+The 1.2 m secondary transverse-edge effect is not embedded into R2'/X2'/Lm; use the existing external current/thrust correction until a self-consistent finite-width 3D complex-impedance extraction is available.
