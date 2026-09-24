@@ -369,6 +369,75 @@
       "scope": "one complete physical double-sided DSLIM channel with two adjacent 3 m stator segments, explicit V4.2 top/bottom winding geometry, and centered 4.5 m x 1.2 m x 16 mm aluminium secondary",
       "replication_rule": "Two physical DSLIM channels are required for the four-face system. Inter-channel mechanical pitch is not frozen, so the model defines one complete channel and a duplication rule rather than inventing channel spacing.",
       "collision_audit": "PASS: A/B/C phase-to-phase, winding-to-core, and winding-to-secondary intersection volumes are zero in the validated representative geometry."
+    },
+    "t_equivalent_circuit": {
+      "model_id": "DSLIM_V2_3m_4face_Teq_40mps",
+      "state": "ENGINEERING_BASELINE_CONDITIONAL",
+      "scope": "one 3 m longitudinal stator segment, four same-station current faces series-connected as one three-phase branch",
+      "speed_mps": 40,
+      "operating_slip_band_Hz": [
+        3.4,
+        3.8
+      ],
+      "extraction_basis": {
+        "field_model": "direct nonlinear 2D moving-conductor FEM, accepted V2 16 mm geometry",
+        "winding_model": "V4.2 3D CAD-derived copper resistance and end-leakage",
+        "validation_points": "443.2 kN and 500 kN at slip 3.4/3.6/3.8 Hz",
+        "longitudinal_end_effect": true,
+        "transverse_edge_effect_in_T_parameters": false,
+        "note": "1.2 m finite-width effect remains an external thrust/current correction until full 3D complex impedance is available."
+      },
+      "parameters_per_phase": {
+        "R1_dc_80C_ohm": 0.017284,
+        "R1_ac_engineering_ohm": 0.01815,
+        "Lsigma1_2D_mH": 0.526,
+        "Lend_V42_preferred_mH": 0.273,
+        "Lsigma1_preferred_total_mH": 0.799,
+        "Lend_V42_conservative_mH": 0.323,
+        "Lsigma1_conservative_total_mH": 0.849,
+        "Lm_mH": 7.962,
+        "R2_referred_ohm": 0.08753,
+        "Lsigma2_referred_mH": 0.7026,
+        "Rfe_ohm": null
+      },
+      "reference_3p6Hz": {
+        "supply_frequency_Hz": 43.6,
+        "slip_ratio": 0.08257,
+        "Xsigma1_preferred_ohm": 0.2189,
+        "Xsigma1_conservative_ohm": 0.2326,
+        "Xm_ohm": 2.181,
+        "Xsigma2_referred_ohm": 0.1925,
+        "R2_over_s_ohm": 1.06,
+        "note": "T-model branch values at the preferred 3.6 Hz reference."
+      },
+      "validation": {
+        "voltage_rms_error_pct": 0.42,
+        "pf_abs_error": 0.003,
+        "secondary_loss_rms_error_pct": 2.21,
+        "thrust_rms_error_pct": 1,
+        "thrust_max_abs_error_pct": 1.35,
+        "design_500kN_3p6Hz": {
+          "current_A": 2210.8,
+          "rotor_current_referred_A": 1855,
+          "secondary_loss_MW_per_3m_branch": 0.904,
+          "airgap_power_MW_per_3m_branch": 10.943,
+          "mechanical_power_MW_per_3m_branch": 10.039,
+          "thrust_kN_per_3m_branch": 250.98,
+          "two_branch_total_thrust_kN": 501.96,
+          "fem_total_thrust_kN": 500.09,
+          "thrust_error_pct": 0.37
+        }
+      },
+      "transverse_edge_external_correction": {
+        "secondary_width_m": 1.2,
+        "reference_slip_Hz": 3.6,
+        "current_2D_A": 2210.8,
+        "current_screening_1p2m_A": 2344.9,
+        "thrust_factor": 0.889,
+        "state": "ENGINEERING_SCREENING",
+        "note": "Do not alter R2', X2' or Lm solely to force the 1.2 m current correction without full 3D complex-impedance evidence."
+      },
+      "usage_note": "Use this T-equivalent model for 40 m/s longitudinal voltage, PF, air-gap power, secondary loss and thrust calculations near 3.4-3.8 Hz. Apply finite-width thrust/current correction externally."
     }
   },
   "slip_frequency": {
@@ -608,7 +677,7 @@
       "status": "V2 baseline uses a 4.5 m continuous 16 mm secondary for electromagnetic design. The older 2 x 2.9 m split/joint concept remains historical analysis only."
     }
   },
-  "baseline_revision": "2026-09-23-v42-end-leakage",
+  "baseline_revision": "2026-09-24-motor-t-equivalent",
   "system_40mps_nominal_requirement": {
     "status": "V2_DIRECT_16MM_2D_ENGINEERING",
     "speed_mps": 40,
@@ -991,5 +1060,95 @@
       "phase-impedance and protection settings"
     ],
     "recommendation": "Use 0.273 mH/phase as the current engineering value and 0.323 mH/phase as the conservative voltage-design upper screening value; keep full 3D H(curl) closure open."
+  },
+  "baseline_change_20260924_motor_t_equivalent": {
+    "parameter": "motor T-equivalent circuit for one 3 m four-face-series branch",
+    "old_value": "No explicit validated T-equivalent circuit in the accepted V2 baseline",
+    "new_value": {
+      "model_id": "DSLIM_V2_3m_4face_Teq_40mps",
+      "state": "ENGINEERING_BASELINE_CONDITIONAL",
+      "scope": "one 3 m longitudinal stator segment, four same-station current faces series-connected as one three-phase branch",
+      "speed_mps": 40,
+      "operating_slip_band_Hz": [
+        3.4,
+        3.8
+      ],
+      "extraction_basis": {
+        "field_model": "direct nonlinear 2D moving-conductor FEM, accepted V2 16 mm geometry",
+        "winding_model": "V4.2 3D CAD-derived copper resistance and end-leakage",
+        "validation_points": "443.2 kN and 500 kN at slip 3.4/3.6/3.8 Hz",
+        "longitudinal_end_effect": true,
+        "transverse_edge_effect_in_T_parameters": false,
+        "note": "1.2 m finite-width effect remains an external thrust/current correction until full 3D complex impedance is available."
+      },
+      "parameters_per_phase": {
+        "R1_dc_80C_ohm": 0.017284,
+        "R1_ac_engineering_ohm": 0.01815,
+        "Lsigma1_2D_mH": 0.526,
+        "Lend_V42_preferred_mH": 0.273,
+        "Lsigma1_preferred_total_mH": 0.799,
+        "Lend_V42_conservative_mH": 0.323,
+        "Lsigma1_conservative_total_mH": 0.849,
+        "Lm_mH": 7.962,
+        "R2_referred_ohm": 0.08753,
+        "Lsigma2_referred_mH": 0.7026,
+        "Rfe_ohm": null
+      },
+      "reference_3p6Hz": {
+        "supply_frequency_Hz": 43.6,
+        "slip_ratio": 0.08257,
+        "Xsigma1_preferred_ohm": 0.2189,
+        "Xsigma1_conservative_ohm": 0.2326,
+        "Xm_ohm": 2.181,
+        "Xsigma2_referred_ohm": 0.1925,
+        "R2_over_s_ohm": 1.06,
+        "note": "T-model branch values at the preferred 3.6 Hz reference."
+      },
+      "validation": {
+        "voltage_rms_error_pct": 0.42,
+        "pf_abs_error": 0.003,
+        "secondary_loss_rms_error_pct": 2.21,
+        "thrust_rms_error_pct": 1,
+        "thrust_max_abs_error_pct": 1.35,
+        "design_500kN_3p6Hz": {
+          "current_A": 2210.8,
+          "rotor_current_referred_A": 1855,
+          "secondary_loss_MW_per_3m_branch": 0.904,
+          "airgap_power_MW_per_3m_branch": 10.943,
+          "mechanical_power_MW_per_3m_branch": 10.039,
+          "thrust_kN_per_3m_branch": 250.98,
+          "two_branch_total_thrust_kN": 501.96,
+          "fem_total_thrust_kN": 500.09,
+          "thrust_error_pct": 0.37
+        }
+      },
+      "transverse_edge_external_correction": {
+        "secondary_width_m": 1.2,
+        "reference_slip_Hz": 3.6,
+        "current_2D_A": 2210.8,
+        "current_screening_1p2m_A": 2344.9,
+        "thrust_factor": 0.889,
+        "state": "ENGINEERING_SCREENING",
+        "note": "Do not alter R2', X2' or Lm solely to force the 1.2 m current correction without full 3D complex-impedance evidence."
+      },
+      "usage_note": "Use this T-equivalent model for 40 m/s longitudinal voltage, PF, air-gap power, secondary loss and thrust calculations near 3.4-3.8 Hz. Apply finite-width thrust/current correction externally."
+    },
+    "decision": "ACCEPT_ENGINEERING_BASELINE",
+    "reason": "A compact branch model is needed for converter/control/loss studies and has been cross-validated against the accepted nonlinear 16 mm 2D FEM.",
+    "evidence": [
+      "Joint fit across six FEM operating points: 443.2 kN and 500 kN at 3.4/3.6/3.8 Hz.",
+      "Terminal-voltage RMS error about 0.42%, PF absolute error about 0.003.",
+      "Secondary-loss RMS error about 2.21%.",
+      "Thrust RMS error about 1.00%, maximum absolute error about 1.35%.",
+      "At 500 kN / 3.6 Hz the T model gives 501.96 kN for two active 3 m branches versus 500.09 kN FEM."
+    ],
+    "downstream_impact": [
+      "converter voltage/current and modulation studies",
+      "control-oriented motor model",
+      "segment power and loss estimation",
+      "energy-storage power calculation",
+      "protection and observer design"
+    ],
+    "recommendation": "Use as ENGINEERING_BASELINE_CONDITIONAL until self-consistent finite-width 3D complex-impedance extraction is available."
   }
 }
